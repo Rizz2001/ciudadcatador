@@ -18,20 +18,22 @@ body {
     z-index: 0;
 }
 
-/* 2. LA MAGIA: La capa de espejo desenfocado oscuro */
+/* 2. LA MAGIA: La capa de espejo desenfocado AZUL MARINO */
 body::before {
     content: '';
-    position: fixed; /* Se queda fija cubriendo toda la pantalla */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(2, 11, 30, 0.65); /* Un azul marino oscuro muy transparente */
-    backdrop-filter: blur(15px); /* EL DESENFOQUE (Mueve este número si lo quieres más o menos borroso) */
+    
+    /* El truco: Tu azul corporativo exacto, pero con 75% de transparencia */
+    background: rgba(0, 26, 88, 0.75); 
+    
+    backdrop-filter: blur(15px); /* El efecto de cristal empañado */
     -webkit-backdrop-filter: blur(15px);
-    z-index: -1; /* Lo manda al fondo para que no tape los textos */
+    z-index: -1; 
 }
-
 h1, h2, h3 {
     font-family: var(--font-title);
 }
