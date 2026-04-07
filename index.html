@@ -6,7 +6,7 @@
     <title>Ciudad Catador | Tu punto de encuentro</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
@@ -25,12 +25,12 @@
     </header>
 
     <main class="hero-section">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-right">
             <h1>Tu nuevo punto<br>de encuentro.</h1>
             <p>Ciudad Catador es el centro comercial diseñado para ti. Descubre las mejores tiendas, feria de comida, entretenimiento y servicios en un solo lugar.</p>
         </div>
         
-        <div class="hero-image">
+        <div class="hero-image" data-aos="fade-left">
             <img src="./assets/img/foto-principal.jpg" alt="Centro Comercial Ciudad Catador">
             <div class="glow-effect"></div>
         </div>
@@ -58,7 +58,7 @@
             <p>Conoce las marcas y servicios que hacen vida en nuestro centro comercial.</p>
         </div>
 
-        <div class="locales-grid">
+        <div class="locales-grid" data-aos="zoom-in">
             
             <a href="https://instagram.com/tu_local" target="_blank" class="local-card">
                 <div class="local-logo">
@@ -105,7 +105,7 @@
 <footer class="footer-section">
         <div class="footer-content">
             
-            <div class="footer-box horarios-box">
+            <div class="footer-box horarios-box" data-aos="fade-up">
                 <h3>Horarios de Apertura</h3>
                 <ul class="horarios-list">
                     <li><span>Lunes a Miércoles:</span> 5:00 am - 2:00 am</li>
@@ -114,7 +114,7 @@
                 </ul>
             </div>
 
-            <div class="footer-box footer-social">
+            <div class="footer-box footer-social" data-aos="fade-up" data-aos-delay="200">
                 <h2>[ CIUDAD CATADOR ]</h2>
                 <p>Tu punto de encuentro.</p>
                 <div class="social-icons">
@@ -142,6 +142,7 @@
             <p>&copy; 2026 Ciudad Catador. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
