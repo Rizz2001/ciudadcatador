@@ -1,0 +1,14 @@
+:root {
+    /* Paleta Ciudad Catador adaptada a Dark Mode */
+    --bg-dark: #020b1e; /* Un azul marino casi negro para el fondo */
+    --azul-marca: #001a58;
+    --gris-marca: #626262;
+    --blanco: #ffffff;
+    
+    /* Acentos para destacar (como el amarillo/verde de tu imagen) */
+    --acento: #d4af37; /* Sugiero un dorado para licores, o puedes usar blanco */
+    
+    /* Tipografías */
+    --font-title: 'Poppins', sans-serif;
+    --font-text: 'Montserrat', sans-serif;
+}
