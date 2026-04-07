@@ -245,7 +245,106 @@
     margin-bottom: 40px;
     max-width: 90%;
 }
+/* --- FOOTER (PIE DE PÁGINA) --- */
+.footer-section {
+    background-color: rgba(0, 11, 30, 0.95); /* Fondo oscuro profundo */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px 10% 20px 10%;
+    position: relative;
+    z-index: 2;
+}
 
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-box {
+    flex: 1;
+    min-width: 280px;
+}
+
+.footer-box h3 {
+    color: var(--blanco);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+/* Lista de Horarios */
+.horarios-list {
+    list-style: none;
+}
+
+.horarios-list li {
+    color: var(--gris-marca);
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.horarios-list li span {
+    color: var(--acento); /* Días en dorado para resaltar */
+    font-weight: 600;
+}
+
+/* Redes Sociales */
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea los elementos a la derecha en PC */
+    text-align: right;
+}
+
+.footer-social h2 {
+    font-size: 1.5rem;
+    color: var(--blanco);
+    margin-bottom: 5px;
+}
+
+.footer-social p {
+    color: var(--gris-marca);
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%; /* Círculo perfecto */
+    color: var(--blanco);
+    transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+    background-color: var(--acento); /* Brillo dorado al pasar el mouse */
+    border-color: var(--acento);
+    color: var(--bg-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}
 
 /* =========================================
    DISEÑO RESPONSIVE PREMIUM (ANDROID & iOS)
@@ -402,5 +501,22 @@
     .footer-logo-section img {
         margin: 0 auto;
         display: block;
+    }
+    /* Ajustes Footer Móvil */
+    .footer-section {
+        padding: 40px 5% 20px 5%;
+    }
+    .footer-content {
+        flex-direction: column; /* Apila el horario y las redes */
+        gap: 40px;
+    }
+    .footer-social {
+        align-items: center; /* Centra todo */
+        text-align: center;
+    }
+    .horarios-list li {
+        flex-direction: column; /* Apila el día y la hora en teléfonos */
+        align-items: center;
+        gap: 5px;
     }
 }
