@@ -96,33 +96,47 @@
     z-index: 1;
 }
 
-.trending-images {
+/* --- CUADRÍCULA DE LOGOS --- */
+.logos-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 20px;
 }
 
-.img-box {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+.logo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    padding: 30px;
+    aspect-ratio: 1 / 1;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+.logo-box img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
 }
 
-.img-box:hover img {
+.logo-box:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--acento);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.logo-box:hover img {
     transform: scale(1.1);
 }
 
+/* --- TEXTOS DE LA DERECHA --- */
 .trending-text {
     display: flex;
     flex-direction: column;
@@ -153,55 +167,107 @@
     max-width: 90%;
 }
 
-
 /* =========================================
-   DISEÑO RESPONSIVE (MÓVILES Y TABLETS)
+   DISEÑO RESPONSIVE PREMIUM (MÓVILES)
 ========================================= */
 @media (max-width: 990px) {
+    /* 1. Menú adaptable */
     .navbar {
         flex-direction: column;
+        padding: 20px 5%;
+        gap: 20px;
+    }
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap; /* Permite que los enlaces bajen si no caben */
         gap: 15px;
-        padding: 20px;
+    }
+    .nav-links .btn-primary {
+        padding: 8px 20px; /* Botón de contacto más sutil en móvil */
     }
 
+    /* 2. Textos principales proporcionados */
     .hero-section {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 40px 5%;
+        padding: 10px 5% 40px 5%; /* Menos espacio en blanco arriba */
     }
-
-    .hero-content h1 { font-size: 3rem; }
-    .hero-content p { max-width: 100%; margin: 0 auto 30px auto; }
+    .hero-content h1 { 
+        font-size: 2.6rem; /* Letra más manejable */
+        line-height: 1.2;
+    }
+    .hero-content p { 
+        max-width: 100%; 
+        font-size: 1rem;
+        margin: 0 auto 30px auto; 
+    }
     
+    /* 3. Botones estilo App (100% de ancho) */
     .hero-buttons {
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .hero-image { margin-top: 50px; }
-
-    .stats-glass-card {
-        position: relative;
-        bottom: 0;
-        left: 0;
         width: 100%;
         flex-direction: column;
-        margin-top: 40px;
-        align-items: center;
+        gap: 15px;
+    }
+    .hero-buttons .btn-primary {
+        width: 100%; /* Ocupa todo el ancho del celular */
+        text-align: center;
+    }
+    .hero-buttons .btn-text {
+        margin-top: 10px;
     }
 
+    /* 4. Tarjeta de estadísticas elegante y compacta */
+    .hero-image { margin-top: 40px; }
+    
+    .stats-glass-card {
+        position: relative;
+        bottom: 0; left: 0; width: 100%;
+        margin-top: -20px; /* Sube un poco para montarse sutilmente en la foto */
+        flex-direction: column;
+        padding: 25px;
+        gap: 0; /* Quitamos el hueco para usar bordes separadores */
+        border-radius: 15px;
+    }
+    .stat-item {
+        align-items: center;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria elegante */
+        width: 100%;
+    }
+    .stat-item:last-child {
+        border-bottom: none; /* Quitamos la línea al último elemento */
+        padding-bottom: 0;
+    }
+    .stat-number { font-size: 2rem; }
+
+    /* 5. Sección de Logos ordenados */
     .trending-section {
         grid-template-columns: 1fr;
-        gap: 50px;
-        padding: 50px 5%;
+        gap: 40px;
+        padding: 60px 5%;
     }
     
-    .trending-images { order: 2; }
+    .logos-grid { 
+        order: 2; 
+        gap: 15px; /* Menos espacio entre las cajas */
+    }
+    .logo-box {
+        padding: 15px; /* Cajas de logos más compactas */
+        border-radius: 15px;
+    }
     
     .trending-text {
         order: 1;
         text-align: center;
         align-items: center;
     }
-    .trending-text h2 { font-size: 2.5rem; }
+    .trending-text h2 { 
+        font-size: 2.2rem; 
+        margin-bottom: 15px;
+    }
+    .trending-text p {
+        font-size: 1rem;
+    }
 }
