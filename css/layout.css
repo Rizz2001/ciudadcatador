@@ -1,0 +1,59 @@
+/* --- CABECERA --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--acento);
+}
+
+/* --- SECCIÓN PRINCIPAL --- */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide la pantalla en 2 columnas */
+    padding: 50px 5%;
+    min-height: 80vh;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #c0c8d6; /* Un gris azulado para que no brille tanto el texto */
+    margin-bottom: 40px;
+    max-width: 85%;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+}

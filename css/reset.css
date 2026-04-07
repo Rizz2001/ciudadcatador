@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--blanco);
+    font-family: var(--font-text);
+    overflow-x: hidden; /* Evita que la página se mueva hacia los lados */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+}
