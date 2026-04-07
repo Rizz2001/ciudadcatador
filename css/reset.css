@@ -1,3 +1,26 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg-dark-gradient); color: var(--blanco); font-family: var(--font-text); overflow-x: hidden; min-height: 100vh; }
-h1, h2, h3 { font-family: var(--font-title); }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-dark-gradient);
+    color: var(--blanco);
+    font-family: var(--font-text);
+    
+    /* ESTAS TRES LÍNEAS SALVAN EL DISEÑO EN MÓVILES */
+    overflow-x: hidden; 
+    width: 100%; 
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+}
+
+/* Regla de oro: Ninguna imagen puede ser más grande que su caja */
+img {
+    max-width: 100%;
+    height: auto;
+}

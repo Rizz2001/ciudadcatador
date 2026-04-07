@@ -6,6 +6,12 @@
     padding: 30px 5%;
 }
 
+.logo img {
+    max-width: 100%;
+    height: auto;
+    width: 180px;
+}
+
 .nav-links {
     display: flex;
     gap: 30px;
@@ -167,11 +173,9 @@
     max-width: 90%;
 }
 
+
 /* =========================================
- 
-========================================= */
-/* =========================================
-   DISEÑO RESPONSIVE celular
+   DISEÑO RESPONSIVE "A PRUEBA DE BALAS" (MÓVILES)
 ========================================= */
 @media (max-width: 768px) {
     
@@ -182,20 +186,20 @@
         gap: 15px;
     }
     .logo img {
-        width: 160px; /* Tamaño fijo para que el logo principal no estalle */
-        height: auto;
+        width: 160px; /* Ancho fijo seguro para móvil */
     }
     .nav-links {
         flex-direction: column;
         width: 100%;
         gap: 15px;
-        background: rgba(255, 255, 255, 0.05); /* Fondo sutil para el menú */
+        background: rgba(255, 255, 255, 0.05);
         padding: 15px;
         border-radius: 15px;
         text-align: center;
+        box-sizing: border-box;
     }
     .nav-links .btn-primary {
-        display: inline-block; /* Arregla el botón de Contáctanos */
+        display: inline-block;
         width: auto;
     }
 
@@ -210,26 +214,28 @@
         font-size: 2.3rem; 
         margin-top: 15px;
     }
+    .hero-content p {
+        max-width: 100%;
+        margin: 0 auto 30px auto;
+    }
     
     /* 3. Botones estilo App */
     .hero-buttons {
         flex-direction: column;
         width: 100%;
         gap: 20px;
+        justify-content: center;
     }
     .hero-buttons .btn-primary {
         display: block;
         width: 100%;
+        box-sizing: border-box;
     }
 
     /* 4. Tarjeta de Estadísticas bien alineada */
     .hero-image {
         margin-top: 30px;
         width: 100%;
-    }
-    .hero-image img {
-        width: 100%;
-        height: auto;
     }
     .stats-glass-card {
         position: relative;
@@ -255,36 +261,32 @@
     }
     .stat-number { font-size: 2rem; }
 
-    /* 5. ARREGLO DE LOS LOGOS GIGANTES (Mundo Novo, etc) */
+    /* 5. ARREGLO ESTRICTO DE LOS LOGOS */
     .trending-section {
         grid-template-columns: 1fr;
         padding: 40px 5%;
         gap: 30px;
     }
     .trending-text {
-        order: 1; /* Texto arriba */
+        order: 1;
         text-align: center;
         align-items: center;
     }
     .trending-text h2 { font-size: 2rem; margin-bottom: 15px; }
-    .trending-text p { font-size: 1rem; }
+    .trending-text p { font-size: 1rem; max-width: 100%; }
     
     .logos-grid { 
-        order: 2; /* Logos abajo */
+        order: 2; 
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important; /* FORZAMOS 2 columnas en móvil */
+        grid-template-columns: 1fr 1fr !important;
         gap: 15px;
         width: 100%;
         box-sizing: border-box;
     }
     .logo-box {
         padding: 15px;
-        aspect-ratio: 1 / 1; /* Obliga a que sean cuadrados perfectos */
+        aspect-ratio: 1 / 1;
         width: 100%;
-    }
-    .logo-box img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+        box-sizing: border-box;
     }
 }
