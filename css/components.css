@@ -3,7 +3,7 @@
     background-color: var(--blanco);
     color: var(--bg-dark);
     padding: 12px 28px;
-    border-radius: 30px; /* Bordes muy redondeados como en la imagen */
+    border-radius: 30px;
     font-family: var(--font-text);
     font-weight: 600;
     text-decoration: none;
@@ -14,20 +14,49 @@
     background-color: var(--acento);
 }
 
+.btn-text {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.btn-text:hover {
+    color: var(--acento);
+}
+
+.link-arrow {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--blanco);
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.link-arrow:hover {
+    color: var(--acento);
+    border-bottom: 1px solid var(--acento);
+    letter-spacing: 1px;
+}
+
 /* Tarjeta Flotante (Glassmorphism) */
 .stats-glass-card {
-    background: rgba(255, 255, 255, 0.05); /* Blanco casi transparente */
-    backdrop-filter: blur(15px); /* El efecto de cristal empañado */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 30px 50px;
     display: flex;
-    gap: 60px;
+    justify-content: space-around;
+    gap: 20px;
     position: absolute;
-    bottom: -50px; /* La hace flotar entre dos secciones */
+    bottom: -50px;
     left: 5%;
     width: 90%;
+    z-index: 10;
 }
 
 .stat-item {

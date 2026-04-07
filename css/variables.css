@@ -1,9 +1,14 @@
 :root {
-    --bg-dark: #001a58; /* Tu azul oscuro como fondo principal */
-    --gris-marca: #626262;
-    --blanco: #ffffff;
-    --acento: #d4af37; /* Un doradito elegante para resaltar */
+    /* Fondo con degradado profundo */
+    --bg-dark-gradient: linear-gradient(135deg, #020b1e 0%, #00113a 100%);
+    --bg-dark: #001a58;
     
+    /* Colores de marca */
+    --gris-marca: #8a96a8; /* Un gris más claro para que resalte en oscuro */
+    --blanco: #ffffff;
+    --acento: #d4af37; /* Dorado elegante */
+    
+    /* Tipografías */
     --font-title: 'Poppins', sans-serif;
     --font-text: 'Montserrat', sans-serif;
 }

@@ -5,10 +5,11 @@
 }
 
 body {
-    background-color: var(--bg-dark);
+    background: var(--bg-dark-gradient);
     color: var(--blanco);
     font-family: var(--font-text);
-    overflow-x: hidden; /* Evita que la página se mueva hacia los lados */
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 h1, h2, h3 {

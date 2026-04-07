@@ -23,13 +23,27 @@
     color: var(--acento);
 }
 
-/* --- SECCIÓN PRINCIPAL --- */
+/* --- SECCIÓN PRINCIPAL (HERO) --- */
 .hero-section {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide la pantalla en 2 columnas */
-    padding: 50px 5%;
-    min-height: 80vh;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 10%;
+    min-height: 90vh;
     position: relative;
+    align-items: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(212, 175, 55, 0.1);
+    filter: blur(150px);
+    top: 10%;
+    left: 5%;
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .hero-content {
@@ -47,7 +61,7 @@
 
 .hero-content p {
     font-size: 1.1rem;
-    color: #c0c8d6; /* Un gris azulado para que no brille tanto el texto */
+    color: var(--gris-marca);
     margin-bottom: 40px;
     max-width: 85%;
     line-height: 1.6;
@@ -56,123 +70,138 @@
 .hero-buttons {
     display: flex;
     align-items: center;
+    gap: 20px;
 }
-/* --- SECCIÓN DE ESPACIOS (GRID) --- */
-.spaces-section {
-    padding: 100px 10% 50px 10%; /* Mucho espacio para que respire */
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 2;
+    position: relative;
+}
+
+/* --- SECCIÓN "TRENDING" --- */
+.trending-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 100px 10%;
+    align-items: center;
     position: relative;
     z-index: 1;
 }
 
-.spaces-header {
-    margin-bottom: 50px;
+.trending-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
 }
 
-.spaces-header h2 {
-    font-size: 3rem;
+.img-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.img-box:hover img {
+    transform: scale(1.1);
+}
+
+.trending-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.badge {
+    color: var(--acento);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.trending-text h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
     color: var(--blanco);
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
-.spaces-header p {
+.trending-text p {
     color: var(--gris-marca);
     font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 90%;
 }
 
-/* La cuadrícula adaptativa */
-.spaces-grid {
-    display: grid;
-    /* Esto hace que las columnas se acomoden solas dependiendo del tamaño de la pantalla */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
 
-/* Las tarjetas estilo cristal oscuro */
-.space-card {
-    background: rgba(255, 255, 255, 0.03); /* Fondo casi transparente */
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde sutil */
-    border-radius: 20px;
-    height: 350px;
-    display: flex;
-    align-items: flex-end; /* Manda el texto hacia abajo */
-    padding: 30px;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    /* Aquí más adelante pondremos fotos de fondo para cada tarjeta */
-}
-
-/* Efecto al pasar el ratón */
-.space-card:hover {
-    transform: translateY(-10px); /* Hace que la tarjeta flote hacia arriba */
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(212, 175, 55, 0.3); /* Brillo dorado en el borde */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.card-content h3 {
-    font-size: 1.5rem;
-    color: var(--blanco);
-    margin-bottom: 5px;
-}
-
-.card-content p {
-    color: var(--gris-marca);
-    font-size: 0.9rem;
-}
 /* =========================================
    DISEÑO RESPONSIVE (MÓVILES Y TABLETS)
 ========================================= */
 @media (max-width: 990px) {
-    
-    /* 1. El Menú se apila */
     .navbar {
         flex-direction: column;
         gap: 15px;
         padding: 20px;
     }
 
-    /* 2. La sección principal pasa de 2 a 1 columna */
     .hero-section {
         grid-template-columns: 1fr;
         text-align: center;
         padding: 40px 5%;
     }
 
-    /* 3. Achicamos la letra gigante para que quepa */
-    .hero-content h1 {
-        font-size: 3rem; 
-    }
-
-    .hero-content p {
-        max-width: 100%;
-        margin: 0 auto 30px auto;
-    }
-
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content p { max-width: 100%; margin: 0 auto 30px auto; }
+    
     .hero-buttons {
         justify-content: center;
-        flex-direction: column; /* Apila los botones en móvil */
-        gap: 20px;
-    }
-    
-    .hero-buttons a[style] {
-        margin-left: 0 !important; /* Centra el texto del evento */
+        flex-direction: column;
     }
 
-    /* 4. Separamos un poco la imagen del texto */
-    .hero-image {
-        margin-top: 50px;
-    }
+    .hero-image { margin-top: 50px; }
 
-    /* 5. Acomodamos la tarjeta de cristal para que no se salga de la pantalla */
     .stats-glass-card {
-        position: relative; /* Deja de flotar de forma absoluta */
+        position: relative;
         bottom: 0;
         left: 0;
         width: 100%;
-        flex-direction: column; /* Apila las estadísticas una sobre otra */
-        gap: 20px;
+        flex-direction: column;
         margin-top: 40px;
-        padding: 30px;
         align-items: center;
     }
+
+    .trending-section {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 50px 5%;
+    }
+    
+    .trending-images { order: 2; }
+    
+    .trending-text {
+        order: 1;
+        text-align: center;
+        align-items: center;
+    }
+    .trending-text h2 { font-size: 2.5rem; }
 }
