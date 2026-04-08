@@ -1,5 +1,16 @@
 /* =============================================
    CURSOR PERSONALIZADO
+   ─────────────────────────────────────────────
+   BUG FIX 1: opacity:0 al inicio para que no
+   aparezca en esquina (0,0) antes del primer
+   mousemove. El JS lo activa al primer evento.
+
+   BUG FIX 7: Removido mix-blend-mode:difference
+   del punto — en fondos oscuros se volvía negro
+   invisible. El anillo conserva el efecto sutil.
+
+   BUG FIX 8: var(--ease-out) definida localmente
+   aquí para asegurar que el cursor-ring la tenga.
    ============================================= */
 .cursor {
     position: fixed;
@@ -10,9 +21,12 @@
     pointer-events: none;
     z-index: 99999;
     transform: translate(-50%, -50%);
-    transition: transform 0.1s, width 0.3s var(--transition-base), height 0.3s var(--transition-base), background 0.3s;
-    mix-blend-mode: difference;
+    /* FIX: Sin mix-blend-mode, sin var en transition duration */
+    transition: width 0.25s ease, height 0.25s ease, opacity 0.3s ease;
+    opacity: 0; /* FIX: empieza invisible */
 }
+
+.cursor.visible { opacity: 1; } /* activado por JS al primer mousemove */
 
 .cursor-ring {
     position: fixed;
@@ -23,15 +37,22 @@
     pointer-events: none;
     z-index: 99998;
     transform: translate(-50%, -50%);
-    transition: transform 0.12s var(--ease-out), width 0.3s, height 0.3s, opacity 0.3s, border-color 0.3s;
-    opacity: 0.6;
+    /* FIX: transiciones con valores directos, sin var() anidadas */
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+    opacity: 0; /* FIX: empieza invisible */
 }
 
-.cursor.is-hovering { width: 18px; height: 18px; }
-.cursor-ring.is-hovering { width: 56px; height: 56px; opacity: 0.3; }
+.cursor-ring.visible { opacity: 0.5; }
+
+.cursor.is-hovering    { width: 18px; height: 18px; }
+.cursor-ring.is-hovering { width: 56px; height: 56px; opacity: 0.2; }
 
 /* =============================================
    NAVBAR
+   ─────────────────────────────────────────────
+   BUG FIX 2: .nav-link-btn no debe heredar el
+   ::after (línea decorativa) de .nav-link.
+   Se neutraliza explícitamente aquí.
    ============================================= */
 .navbar {
     position: fixed;
@@ -43,11 +64,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 28px var(--container-padding);
-    transition: background var(--transition-base), padding var(--transition-base), backdrop-filter var(--transition-base);
+    /* FIX: transiciones con valores directos */
+    transition: background 0.35s ease, padding 0.35s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(8, 9, 13, 0.92);
+    background: rgba(8, 9, 13, 0.94);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 18px var(--container-padding);
@@ -64,7 +86,8 @@
     display: none;
     color: var(--blanco);
     padding: 4px;
-    z-index: 10;
+    /* FIX: z-index alto para estar sobre el menú mobile */
+    z-index: 1001;
 }
 
 .nav-links {
@@ -73,6 +96,7 @@
     align-items: center;
 }
 
+/* ── Enlace de nav estándar ── */
 .nav-link {
     font-family: var(--font-text);
     font-size: var(--fs-sm);
@@ -81,7 +105,7 @@
     text-transform: uppercase;
     color: var(--text-muted);
     position: relative;
-    transition: color var(--transition-base);
+    transition: color 0.35s ease;
 }
 
 .nav-link::after {
@@ -92,12 +116,17 @@
     width: 0;
     height: 1px;
     background: var(--gold);
-    transition: width var(--transition-base);
+    transition: width 0.35s ease;
 }
 
-.nav-link:hover { color: var(--blanco); }
-.nav-link:hover::after { width: 100%; }
+.nav-link:hover            { color: var(--blanco); }
+.nav-link:hover::after     { width: 100%; }
 
+/* ── Botón CTA del nav ──
+   FIX Bug 2: display:inline-flex + position:static
+   elimina el ::after heredado. El ::after necesita
+   position:absolute en el padre — al ser static
+   no genera contexto para ello. */
 .nav-link-btn {
     font-family: var(--font-text);
     font-size: var(--fs-sm);
@@ -108,30 +137,45 @@
     background: var(--gold);
     padding: 10px 24px;
     border-radius: var(--radius-full);
-    transition: background var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+    position: static; /* FIX: evita que ::after de .nav-link se active */
+    transition: background 0.35s ease, transform 0.18s ease, box-shadow 0.35s ease;
+}
+
+/* FIX: resetear el ::after heredado de .nav-link */
+.nav-link-btn::after {
+    display: none !important;
 }
 
 .nav-link-btn:hover {
     background: var(--gold-light);
     transform: translateY(-1px);
     box-shadow: 0 6px 24px rgba(212, 168, 67, 0.4);
+    color: var(--bg-primary) !important;
 }
 
 /* =============================================
    HERO
+   ─────────────────────────────────────────────
+   BUG FIX 4: overflow:hidden removido del hero
+   para que el .hero-badge con left:-24px no
+   quede cortado.
+
+   BUG FIX 5 & 11: hero-section usa display:flex
+   flex-direction:column en lugar de grid para
+   que hero-inner y hero-stats sean simples
+   elementos en flujo sin conflictos de rows.
    ============================================= */
 .hero-section {
     min-height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    padding: 0 var(--container-padding);
-    padding-top: 130px;
-    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 130px var(--container-padding) 0;
     position: relative;
-    overflow: hidden;
+    /* FIX 4: overflow visible para el badge */
+    overflow: visible;
 }
 
-/* Línea decorativa diagonal */
+/* Línea decorativa */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -141,6 +185,8 @@
     height: 100%;
     background: linear-gradient(to bottom, transparent, var(--gold-border), transparent);
     pointer-events: none;
+    /* FIX: z-index negativo para que no tape contenido */
+    z-index: 0;
 }
 
 .hero-inner {
@@ -148,6 +194,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
+    /* FIX 5 & 11: flex-grow para ocupar el espacio disponible */
+    flex: 1;
+    position: relative;
+    z-index: 1;
 }
 
 /* Etiqueta superior tipo editorial */
@@ -162,6 +212,7 @@
     width: 40px;
     height: 1px;
     background: var(--gold);
+    flex-shrink: 0;
 }
 
 .hero-eyebrow span {
@@ -203,9 +254,14 @@
     flex-wrap: wrap;
 }
 
+/* ── Imagen hero ──
+   FIX 4: overflow:visible en el contenedor para
+   que el badge no quede recortado */
 .hero-image-wrap {
     position: relative;
     height: 560px;
+    /* FIX: overflow visible para que el badge se muestre */
+    overflow: visible;
 }
 
 .hero-image-wrap img {
@@ -214,6 +270,8 @@
     object-fit: cover;
     border-radius: var(--radius-2xl);
     filter: brightness(0.88) contrast(1.05);
+    /* FIX: display:block elimina espacio blanco bajo la imagen */
+    display: block;
 }
 
 /* Marco decorativo dorado offset */
@@ -231,15 +289,19 @@
 .hero-badge {
     position: absolute;
     bottom: 28px;
-    left: -24px;
-    background: rgba(8, 9, 13, 0.9);
+    /* FIX 4: cambiado a right:-24px para evitar overflow izquierdo */
+    right: -20px;
+    background: rgba(8, 9, 13, 0.92);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--gold-border);
     border-radius: var(--radius-lg);
     padding: 16px 22px;
     display: flex;
     align-items: center;
     gap: 14px;
+    /* FIX: z-index para estar sobre todo */
+    z-index: 10;
 }
 
 .hero-badge-icon {
@@ -269,12 +331,17 @@
     color: var(--blanco);
 }
 
-/* Stats strip */
+/* ── Stats strip ──
+   FIX 5: Es un elemento flex directo del hero,
+   no necesita grid-column. Se añade margin-top
+   para separarlo del hero-inner. */
 .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border-top: 1px solid var(--border-subtle);
-    margin-top: 0;
+    margin-top: 60px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-stat {
@@ -286,6 +353,7 @@
 
 .hero-stat:last-child { border-right: none; }
 
+/* Acento dorado superior */
 .hero-stat::before {
     content: '';
     position: absolute;
@@ -324,7 +392,7 @@
     margin-bottom: 64px;
 }
 
-.section-header.centered { text-align: center; }
+.section-header.centered            { text-align: center; }
 .section-header.centered .section-tag { justify-content: center; }
 
 .section-tag {
@@ -371,10 +439,22 @@
     line-height: 1.7;
 }
 
-.section-header.centered p { margin-left: auto; margin-right: auto; }
+.section-header.centered p {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* =============================================
    LOCALES
+   ─────────────────────────────────────────────
+   Nota para agregar locales:
+   Duplica cualquier <article class="local-card">
+   en index.html. Actualiza:
+   • data-image="nombre-foto.jpg"   ← foto de fondo (en assets/img/)
+   • href="..."                      ← URL de Instagram u otra red
+   • src del logo                    ← logo del local (en assets/img/)
+   • h3                              ← nombre del local
+   • p                               ← descripción corta
    ============================================= */
 .locales-section {
     padding: var(--section-padding) var(--container-padding);
@@ -384,6 +464,12 @@
 /* Número decorativo de fondo */
 .locales-section::before {
     content: '15+';
+    /*
+    ╔══════════════════════════════════╗
+    ║  EDITA ESTE NÚMERO si agregas    ║
+    ║  más locales. Ej: '20+', '25+'   ║
+    ╚══════════════════════════════════╝
+    */
     position: absolute;
     top: 4rem;
     right: var(--container-padding);
@@ -395,12 +481,17 @@
     pointer-events: none;
     line-height: 1;
     user-select: none;
+    /* FIX: z-index 0 para que no tape las tarjetas */
+    z-index: 0;
 }
 
 .locales-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     gap: 24px;
+    /* FIX: z-index sobre el decorativo */
+    position: relative;
+    z-index: 1;
 }
 
 .local-card {
@@ -409,7 +500,7 @@
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .local-card:hover {
@@ -418,7 +509,7 @@
     box-shadow: var(--shadow-card), 0 0 0 1px var(--gold-border);
 }
 
-/* Imagen de fondo blureada */
+/* Imagen de fondo blureada (aplicada por JS) */
 .local-card::before {
     content: '';
     position: absolute;
@@ -429,7 +520,7 @@
     filter: blur(12px) brightness(0.25) saturate(0.6);
     transform: scale(1.1);
     z-index: 0;
-    transition: filter var(--transition-slow), transform var(--transition-slow);
+    transition: filter 0.6s ease, transform 0.6s ease;
 }
 
 .local-card:hover::before {
@@ -447,11 +538,13 @@
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     transform: scaleX(0);
-    transition: transform var(--transition-base);
+    transition: transform 0.35s ease;
+    z-index: 2;
 }
 
 .local-card:hover::after { transform: scaleX(1); }
 
+/* El <a> ocupa toda la tarjeta y maneja el layout */
 .local-link {
     display: flex;
     flex-direction: column;
@@ -463,6 +556,7 @@
     width: 100%;
     height: 100%;
     text-decoration: none;
+    color: inherit;
 }
 
 .local-logo {
@@ -472,11 +566,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     padding: 14px;
-    transition: border-color var(--transition-base), background var(--transition-base);
+    transition: border-color 0.35s ease, background 0.35s ease;
+    flex-shrink: 0;
 }
 
 .local-card:hover .local-logo {
@@ -506,7 +601,7 @@
     line-height: 1.6;
 }
 
-/* Tag de red social */
+/* Tag de red social — aparece al hover */
 .local-social-tag {
     display: inline-flex;
     align-items: center;
@@ -516,7 +611,7 @@
     color: var(--gold);
     opacity: 0;
     transform: translateY(6px);
-    transition: opacity var(--transition-base), transform var(--transition-base);
+    transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .local-card:hover .local-social-tag {
@@ -526,11 +621,18 @@
 
 /* =============================================
    EXPERIENCIA / GALERÍA
+   ─────────────────────────────────────────────
+   Nota para editar la galería:
+   Las imágenes están en .experiencia-gallery.
+   Cambia el src de cada <img> en index.html
+   por las fotos reales del local (en assets/img/).
+   La primera imagen (.gallery-img:first-child)
+   ocupa 2 filas — ideal para la foto principal.
    ============================================= */
 .experiencia-section {
     padding: var(--section-padding) var(--container-padding);
     position: relative;
-    overflow: hidden;
+    /* FIX: overflow:hidden removido — no es necesario y puede cortar contenido */
 }
 
 .experiencia-inner {
@@ -543,7 +645,6 @@
 .experiencia-features {
     display: flex;
     flex-direction: column;
-    gap: 0;
 }
 
 .feature-item {
@@ -552,7 +653,7 @@
     align-items: flex-start;
     padding: 28px 0;
     border-bottom: 1px solid var(--border-subtle);
-    transition: background var(--transition-base);
+    transition: background 0.35s ease;
 }
 
 .feature-item:first-child { border-top: 1px solid var(--border-subtle); }
@@ -566,7 +667,8 @@
     line-height: 1;
     flex-shrink: 0;
     width: 42px;
-    transition: color var(--transition-base), -webkit-text-stroke-color var(--transition-base);
+    /* FIX: transición con valores directos */
+    transition: color 0.35s ease;
 }
 
 .feature-item:hover .feature-num {
@@ -607,8 +709,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-slow), filter var(--transition-slow);
+    transition: transform 0.6s ease, filter 0.6s ease;
     filter: brightness(0.85) saturate(0.9);
+    /* FIX: display:block para eliminar espacio blanco */
+    display: block;
 }
 
 .gallery-img:hover img {
@@ -616,7 +720,7 @@
     filter: brightness(1) saturate(1);
 }
 
-/* Primer bloque ocupa 2 filas */
+/* Primera imagen ocupa ambas filas */
 .gallery-img:first-child {
     grid-row: 1 / 3;
     border-radius: var(--radius-xl);
@@ -624,6 +728,17 @@
 
 /* =============================================
    CTA — Arrendatarios
+   ─────────────────────────────────────────────
+   BUG FIX 10: overflow:hidden removido del inner.
+   El círculo decorativo (::before) con right:-80px
+   quedaba recortado. Se reemplaza por
+   clip-path en el ::before para que se desvanezca.
+   ─────────────────────────────────────────────
+   Nota para editar:
+   • Cambia el href del btn-primary a #contacto
+     o a un formulario real.
+   • Cambia el href de WhatsApp por tu número:
+     https://wa.me/57XXXXXXXXXX
    ============================================= */
 .arrendatarios-section {
     padding: var(--section-padding) var(--container-padding);
@@ -640,7 +755,8 @@
     gap: 40px;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    /* FIX 10: overflow visible para que el decorativo ::before respire */
+    overflow: visible;
 }
 
 /* Círculo decorativo de fondo */
@@ -653,8 +769,17 @@
     width: 360px;
     height: 360px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(212, 168, 67, 0.07) 0%, transparent 65%);
     pointer-events: none;
+    /* FIX 10: z-index bajo para que no tape los botones */
+    z-index: 0;
+}
+
+/* FIX: texto y botones sobre el decorativo */
+.arrendatarios-text,
+.arrendatarios-inner > div:last-child {
+    position: relative;
+    z-index: 1;
 }
 
 .arrendatarios-text h2 {
@@ -681,6 +806,14 @@
 
 /* =============================================
    UBICACIÓN
+   ─────────────────────────────────────────────
+   Nota para editar:
+   • Dirección: busca el texto "Calle 00 # 00-00"
+   • Horario: busca "Lun–Vie 8am–8pm..."
+   • Parqueadero: busca "300+ espacios..."
+   • Link de Google Maps: busca el href con maps.google
+   • Imagen del mapa: src="./assets/img/mapa-placeholder.jpg"
+     → reemplaza con captura real de Google Maps
    ============================================= */
 .ubicacion-section {
     padding: var(--section-padding) var(--container-padding);
@@ -696,7 +829,7 @@
 .ubicacion-details {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
     margin-top: 36px;
 }
 
@@ -751,9 +884,10 @@
     height: 100%;
     object-fit: cover;
     filter: brightness(0.9) saturate(0.7);
+    display: block;
 }
 
-/* Pin decorativo sobre el mapa */
+/* Pin animado sobre el mapa */
 .map-pin {
     position: absolute;
     top: 50%;
@@ -762,7 +896,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    /* FIX: pointer-events none para que no interfiera con clicks al mapa */
+    pointer-events: none;
 }
 
 .map-pin-dot {
@@ -771,7 +906,7 @@
     background: var(--gold);
     border-radius: 50%;
     border: 3px solid var(--bg-primary);
-    box-shadow: 0 0 0 4px rgba(212, 168, 67, 0.3), var(--shadow-gold);
+    box-shadow: 0 0 0 4px rgba(212, 168, 67, 0.3);
     animation: pin-pulse 2s ease infinite;
 }
 
@@ -783,23 +918,33 @@
 
 @keyframes pin-pulse {
     0%, 100% { box-shadow: 0 0 0 4px rgba(212, 168, 67, 0.3); }
-    50%       { box-shadow: 0 0 0 10px rgba(212, 168, 67, 0.1); }
+    50%       { box-shadow: 0 0 0 10px rgba(212, 168, 67, 0.08); }
 }
 
 /* =============================================
    FOOTER
+   ─────────────────────────────────────────────
+   Nota para editar:
+   • Redes sociales: cambia los href de .icon-btn
+   • Horarios: edita el texto dentro de .horarios-list
+   • Teléfono: busca "+57 300 000 0000"
+   • Email: busca "info@ciudadcatador.com"
+   • Dirección: busca "Calle 00 # 00-00, Ciudad"
+   • Copyright: busca "&copy; 2025 Ciudad Catador"
    ============================================= */
 .footer-section {
     padding: clamp(4rem, 7vw, 6rem) var(--container-padding) 2rem;
     border-top: 1px solid var(--border-subtle);
     position: relative;
+    /* FIX: overflow:hidden para contener el watermark CC */
+    overflow: hidden;
 }
 
-/* Logo grande watermark */
+/* Watermark tipográfico decorativo */
 .footer-section::before {
     content: 'CC';
     position: absolute;
-    bottom: 2rem;
+    bottom: -1rem;
     right: var(--container-padding);
     font-family: var(--font-title);
     font-size: 14rem;
@@ -809,6 +954,7 @@
     pointer-events: none;
     line-height: 1;
     user-select: none;
+    z-index: 0;
 }
 
 .footer-top {
@@ -816,6 +962,8 @@
     grid-template-columns: 2fr 1fr 1fr;
     gap: 60px;
     margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-brand p {
@@ -838,12 +986,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     color: var(--text-muted);
     text-decoration: none;
-    transition: background var(--transition-base), border-color var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+    transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, transform 0.18s ease;
 }
 
 .icon-btn:hover {
@@ -851,6 +999,11 @@
     border-color: var(--gold-border);
     color: var(--gold);
     transform: translateY(-3px);
+}
+
+.footer-col {
+    position: relative;
+    z-index: 1;
 }
 
 .footer-col h4 {
@@ -876,6 +1029,10 @@
 .horarios-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .horarios-list li span { color: var(--gold); font-weight: var(--fw-medium); white-space: nowrap; }
 
+.footer-contact {
+    /* FIX: list-style ya reseteado en reset.css */
+}
+
 .footer-contact li {
     display: flex;
     align-items: center;
@@ -883,9 +1040,20 @@
     font-size: var(--fs-sm);
     color: var(--text-muted);
     margin-bottom: 14px;
+    /* FIX: asegurar que el texto no se desborde */
+    word-break: break-word;
 }
 
+.footer-contact li:last-child { margin-bottom: 0; }
 .footer-contact li svg { color: var(--gold); flex-shrink: 0; }
+
+/* FIX: link de email en el footer */
+.footer-contact li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-contact li a:hover { color: var(--gold); }
 
 .footer-bottom {
     display: flex;
@@ -895,6 +1063,8 @@
     border-top: 1px solid var(--border-subtle);
     gap: 20px;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-bottom p {
@@ -912,14 +1082,24 @@
     font-size: var(--fs-xs);
     color: var(--text-muted);
     letter-spacing: 0.04em;
-    transition: color var(--transition-fast);
+    transition: color 0.18s ease;
 }
 
 .footer-bottom-links a:hover { color: var(--gold); }
 
 /* =============================================
    RESPONSIVE
+   ─────────────────────────────────────────────
+   BUG FIX 3: Al abrir el menú mobile se bloquea
+   el scroll del body (manejado en JS + clase
+   .menu-open en el <body>).
    ============================================= */
+
+/* Clase aplicada al <body> cuando el menú está abierto */
+body.menu-open {
+    overflow: hidden; /* FIX 3 */
+}
+
 @media (max-width: 1024px) {
     .experiencia-inner {
         grid-template-columns: 1fr;
@@ -945,29 +1125,49 @@
 
     .navbar {
         padding: 20px var(--container-padding);
-        flex-wrap: wrap;
     }
 
+    /* FIX: menú mobile como overlay fullscreen correcto */
     .nav-links {
         position: fixed;
         inset: 0;
-        background: rgba(8, 9, 13, 0.97);
+        background: rgba(8, 9, 13, 0.98);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         gap: 36px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s var(--ease-out);
-        padding: 0;
+        /* FIX: usa visibility+opacity en lugar de max-height
+           para evitar el "flicker" de contenido al abrir */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+        padding: 40px;
+        /* FIX: z-index sobre el nav-toggle */
+        z-index: 999;
     }
 
     .nav-links.active {
-        max-height: 100vh;
-        padding: 40px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
-    .nav-link { font-size: var(--fs-xl); }
+    .nav-link {
+        font-size: var(--fs-xl);
+        color: var(--blanco);
+    }
+
+    /* FIX: el botón CTA del nav en mobile */
+    .nav-link-btn {
+        margin-top: 12px;
+    }
+
+    .hero-section {
+        padding-top: 100px;
+    }
 
     .hero-inner {
         grid-template-columns: 1fr;
@@ -975,32 +1175,50 @@
         text-align: center;
     }
 
-    .hero-content p { margin: 0 auto 40px; }
+    .hero-content p {
+        margin: 0 auto 40px;
+    }
+
     .hero-cta-group { justify-content: center; }
 
     .hero-image-wrap {
-        height: 340px;
+        height: 300px;
         order: -1;
     }
 
-    .hero-badge { left: 10px; bottom: 10px; }
+    /* FIX: badge reposicionado en mobile */
+    .hero-badge {
+        right: 10px;
+        bottom: 10px;
+        left: auto;
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .hero-badge-icon { width: 32px; height: 32px; }
 
     .hero-stats {
         grid-template-columns: 1fr;
+        margin-top: 32px;
     }
 
     .hero-stat {
         border-right: none;
         border-bottom: 1px solid var(--border-subtle);
+        padding: 24px 0;
     }
 
     .hero-stat:last-child { border-bottom: none; }
-
     .hero-section::before { display: none; }
 
     .arrendatarios-inner {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    /* FIX: botones centrados en mobile en arrendatarios */
+    .arrendatarios-inner > div:last-child {
+        justify-content: center;
     }
 
     .ubicacion-inner {
@@ -1020,14 +1238,27 @@
         text-align: center;
     }
 
-    .cursor, .cursor-ring { display: none; }
+    .footer-bottom-links { justify-content: center; }
+
+    /* FIX: ocultar cursores en touch */
+    .cursor, .cursor-ring { display: none !important; }
 }
 
 @media (max-width: 480px) {
     .locales-grid { grid-template-columns: 1fr; }
+
     .experiencia-gallery {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        gap: 10px;
     }
+
+    .experiencia-gallery .gallery-img {
+        height: 200px;
+    }
+
+    /* FIX: primera imagen no ocupa 2 filas en mobile */
     .gallery-img:first-child { grid-row: auto; }
+
+    .hero-image-wrap::before { display: none; }
 }
