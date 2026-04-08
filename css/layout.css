@@ -73,12 +73,6 @@
     line-height: 1.6;
 }
 
-.hero-buttons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
 .hero-image {
     position: relative;
 }
@@ -91,7 +85,7 @@
     position: relative;
 }
 
-/* --- NUEVA SECCIÓN DE LOCALES --- */
+/* --- SECCIÓN DE LOCALES CON EFECTO ESPEJO --- */
 .locales-section {
     padding: 100px 10%;
     position: relative;
@@ -114,7 +108,6 @@
     font-size: 1.1rem;
 }
 
-/* La cuadrícula mágica: Se adapta sola sin importar cuántos locales sean */
 .locales-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -122,8 +115,9 @@
 }
 
 .local-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 30px 20px;
     text-align: center;
@@ -131,14 +125,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.3s ease;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.local-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: var(--bg-local);
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(0.4);
+    z-index: 0;
+    transition: all 0.5s ease;
+}
+
+.local-logo, .local-info {
+    position: relative;
+    z-index: 1;
 }
 
 .local-card:hover {
-    background: rgba(255, 255, 255, 0.08);
     border-color: var(--acento);
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.local-card:hover::before {
+    filter: blur(4px) brightness(0.6);
+    transform: scale(1.1);
 }
 
 .local-logo {
@@ -154,12 +170,7 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-    transition: transform 0.3s ease;
-}
-
-.local-card:hover .local-logo img {
-    transform: scale(1.1);
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
 }
 
 .local-info h3 {
@@ -171,83 +182,11 @@
 .local-info p {
     color: var(--gris-marca);
     font-size: 0.9rem;
-    line-height: 1.5;
 }
 
-
-/* --- CUADRÍCULA DE LOGOS --- */
-.logos-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 20px;
-}
-
-.logo-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 30px;
-    aspect-ratio: 1 / 1;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.logo-box img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-}
-
-.logo-box:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: var(--acento);
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-.logo-box:hover img {
-    transform: scale(1.1);
-}
-
-/* --- TEXTOS DE LA DERECHA --- */
-.trending-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.badge {
-    color: var(--acento);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.trending-text h2 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    color: var(--blanco);
-    margin-bottom: 25px;
-}
-
-.trending-text p {
-    color: var(--gris-marca);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 40px;
-    max-width: 90%;
-}
-/* --- FOOTER (PIE DE PÁGINA) --- */
+/* --- FOOTER --- */
 .footer-section {
-    background-color: rgba(0, 11, 30, 0.95); /* Fondo oscuro profundo */
+    background-color: rgba(0, 11, 30, 0.95);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 60px 10% 20px 10%;
     position: relative;
@@ -259,264 +198,72 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-box {
-    flex: 1;
-    min-width: 280px;
-}
-
-.footer-box h3 {
-    color: var(--blanco);
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-}
-
-/* Lista de Horarios */
-.horarios-list {
-    list-style: none;
 }
 
 .horarios-list li {
     color: var(--gris-marca);
-    font-size: 1rem;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 10px;
     margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .horarios-list li span {
-    color: var(--acento); /* Días en dorado para resaltar */
+    color: var(--acento);
     font-weight: 600;
 }
 
-/* Redes Sociales */
 .footer-social {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Alinea los elementos a la derecha en PC */
     text-align: right;
-}
-
-.footer-social h2 {
-    font-size: 1.5rem;
-    color: var(--blanco);
-    margin-bottom: 5px;
-}
-
-.footer-social p {
-    color: var(--gris-marca);
-    margin-bottom: 20px;
 }
 
 .social-icons {
     display: flex;
     gap: 15px;
+    justify-content: flex-end;
 }
 
 .icon-btn {
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45px;
-    height: 45px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%; /* Círculo perfecto */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
     color: var(--blanco);
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
 .icon-btn:hover {
-    background-color: var(--acento); /* Brillo dorado al pasar el mouse */
-    border-color: var(--acento);
-    color: var(--bg-dark);
+    background: var(--acento);
+    color: #000;
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
 }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.85rem;
-}
-
-/* =========================================
-   DISEÑO RESPONSIVE PREMIUM (ANDROID & iOS)
-========================================= */
+/* --- RESPONSIVE PREMIUM --- */
 @media (max-width: 768px) {
+    .navbar { flex-direction: column; gap: 15px; }
+    .logo img { width: 140px !important; }
     
-    /* 1. MENÚ Y LOGO (Jerarquía limpia) */
-    .navbar {
-        flex-direction: column;
-        padding: 15px 5%;
-        gap: 15px;
-    }
-    .logo img {
-        width: 120px !important; /* Logo más discreto y elegante */
-        margin: 0 auto;
-        display: block;
-    }
-    .nav-links {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap; /* Si no caben, bajan ordenadamente */
-        justify-content: center;
-        width: 100%;
-        gap: 10px;
-        padding: 10px 0;
-    }
-    .nav-links a {
-        font-size: 0.9rem;
-        padding: 5px 10px;
-    }
-    .nav-links .btn-primary {
-        width: 100%; /* Botón de contacto ocupa todo el ancho */
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    /* 2. HERO SECTION (Obligamos a que se apile en orden perfecto) */
-    .hero-section {
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 10px 5% 40px 5% !important;
-        text-align: center;
-        min-height: auto !important;
-    }
+    .hero-section { display: flex !important; flex-direction: column !important; text-align: center; }
+    .hero-content h1 { font-size: 2.5rem !important; }
     
-    /* Orden 1: El texto arriba */
-    .hero-content {
-        order: 1;
-        margin-bottom: 20px;
-    }
-    .hero-content h1 { 
-        font-size: 2.4rem !important; 
-        line-height: 1.2;
-        margin-bottom: 15px;
-    }
-    .hero-content p {
-        font-size: 1rem !important;
-        line-height: 1.5;
-        margin: 0 auto;
-    }
-
-    /* Orden 2: La foto en el medio */
-    .hero-image {
-        order: 2;
-        width: 100%;
-        margin-top: 10px;
-    }
-    .hero-image img {
-        border-radius: 15px;
-    }
-
-    /* Orden 3: La tarjeta de estadísticas abajo (¡ARREGLO PRINCIPAL!) */
     .stats-glass-card {
-        order: 3;
-        position: relative !important; /* Deja de flotar y estorbar */
-        bottom: auto !important; 
-        left: auto !important; 
+        position: relative !important;
         width: 100% !important;
-        margin-top: 25px !important;
-        flex-direction: column !important; /* Panel vertical estilo App */
-        padding: 20px !important;
-        border-radius: 15px;
-        box-sizing: border-box;
+        flex-direction: column !important;
+        margin-top: 30px !important;
+        left: 0 !important;
+        bottom: 0 !important;
     }
-    .stat-item {
-        width: 100%;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Líneas separadoras finas */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    .stat-item:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-    .stat-label { 
-        color: rgba(255, 255, 255, 0.7) !important; /* Más legible */
-        font-size: 0.9rem !important;
-        margin-bottom: 5px;
-    }
-    .stat-number { 
-        font-size: 2rem !important; 
-        color: var(--blanco) !important;
-    }
+    
+    .stat-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 0; }
+    .stat-item:last-child { border-bottom: none; }
 
-    /* 3. DIRECTORIO DE LOCALES */
-    .locales-section {
-        padding: 50px 5%;
-    }
-    .locales-header {
-        margin-bottom: 40px;
-    }
-    .locales-header h2 { 
-        font-size: 2rem; 
-        line-height: 1.2;
-    }
-    .locales-grid {
-        grid-template-columns: 1fr; /* 1 sola columna: tarjetas amplias y legibles */
-        gap: 20px;
-    }
-    .local-card {
-        padding: 25px 20px;
-    }
-
-    /* 4. UBICACIÓN Y FOOTER */
-    .location-section {
-        padding: 50px 5%;
-    }
-    .location-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
-    }
-    .location-text h2 {
-        font-size: 2rem;
-    }
-    .hours-box li {
-        flex-direction: column;
-        gap: 5px;
-        align-items: center;
-        text-align: center;
-        padding: 10px 0;
-    }
-    .footer {
-        padding: 50px 5% 20px 5%;
-    }
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-    }
-    .footer-logo-section img {
-        margin: 0 auto;
-        display: block;
-    }
-    /* Ajustes Footer Móvil */
-    .footer-section {
-        padding: 40px 5% 20px 5%;
-    }
-    .footer-content {
-        flex-direction: column; /* Apila el horario y las redes */
-        gap: 40px;
-    }
-    .footer-social {
-        align-items: center; /* Centra todo */
-        text-align: center;
-    }
-    .horarios-list li {
-        flex-direction: column; /* Apila el día y la hora en teléfonos */
-        align-items: center;
-        gap: 5px;
-    }
+    .locales-grid { grid-template-columns: 1fr; }
+    
+    .footer-social { text-align: center; }
+    .social-icons { justify-content: center; }
 }
