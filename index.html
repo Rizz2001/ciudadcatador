@@ -3,687 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  META TAGS — Edita esta sección para SEO y redes sociales   ║
-    ╠══════════════════════════════════════════════════════════════╣
-    ║  description → Aparece en Google bajo el título             ║
-    ║  og:title    → Título al compartir en WhatsApp/Facebook     ║
-    ║  og:image    → Imagen al compartir (agrega la ruta aquí)    ║
-    ║  og:url      → URL real de tu sitio web                     ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <meta name="description" content="Ciudad Catador — Centro comercial premium con más de 15 locales, gastronomía, entretenimiento y servicios exclusivos. Tu nuevo punto de encuentro.">
-    <meta name="theme-color" content="#d4a843">
+    <meta name="description" content="Ciudad Catador - Tu punto de encuentro. Centro comercial con 15+ locales, comida, entretenimiento y servicios.">
+    <meta name="theme-color" content="#d4af37">
     <meta name="author" content="Ciudad Catador">
-
-    <meta property="og:title"       content="Ciudad Catador | Tu punto de encuentro">
-    <meta property="og:description" content="Centro comercial premium con más de 15 locales, gastronomía y entretenimiento.">
-    <meta property="og:type"        content="website">
-    <!-- <meta property="og:image" content="https://tudominio.com/assets/img/og-image.jpg"> -->
-    <!-- <meta property="og:url"   content="https://tudominio.com"> -->
-
+    
     <title>Ciudad Catador | Tu punto de encuentro</title>
-
-    <!-- Fuentes: Cormorant Garamond (editorial serif) + DM Sans (cuerpo) -->
+    
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- AOS (animaciones al scroll) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/components.css">
 
-    <!-- CSS principal — importa variables, reset, layout y components -->
-    <link rel="stylesheet" href="./css/main.css">
-
-    <!-- Favicon — reemplaza con tu ícono real -->
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
 </head>
 <body>
 
-    <!-- Cursores decorativos (solo en desktop con ratón) -->
-    <div class="cursor"      aria-hidden="true"></div>
-    <div class="cursor-ring" aria-hidden="true"></div>
+    <!-- Canvas partículas -->
+    <canvas id="particles-canvas"></canvas>
 
-
-    <!-- ══════════════════════════════════════════
-         NAVBAR
-         ──────────────────────────────────────────
-         Para agregar un enlace de nav:
-         Duplica una línea <a class="nav-link">
-         y ajusta href y texto.
-         El botón "Contáctanos" siempre debe
-         apuntar a #contacto (el id del footer).
-    ══════════════════════════════════════════ -->
-    <header class="navbar" role="banner">
-
+    <!-- ==================== HEADER ==================== -->
+    <header class="navbar">
         <div class="logo">
-            <!-- EDITA: reemplaza logo.png con el archivo de tu logo -->
-            <a href="#" aria-label="Ciudad Catador — Inicio">
-                <img src="./assets/img/logo.png"
-                     alt="Ciudad Catador"
-                     width="160" height="44"
-                     loading="eager">
-            </a>
+            <img src="./assets/img/logo.png" alt="Ciudad Catador" width="160" height="48" loading="eager">
         </div>
-
-        <!-- Botón hamburguesa (solo visible en mobile) -->
-        <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-            <svg class="icon-open" width="28" height="28" viewBox="0 0 28 28"
-                 fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <line x1="4" y1="7"  x2="24" y2="7"/>
+        
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="7" x2="24" y2="7"/>
                 <line x1="4" y1="14" x2="24" y2="14"/>
                 <line x1="4" y1="21" x2="24" y2="21"/>
             </svg>
-            <svg class="icon-close" width="28" height="28" viewBox="0 0 28 28"
-                 fill="none" stroke="currentColor" stroke-width="1.8"
-                 aria-hidden="true" style="display:none">
-                <line x1="5" y1="5" x2="23" y2="23"/>
-                <line x1="23" y1="5" x2="5"  y2="23"/>
-            </svg>
         </button>
 
-        <nav class="nav-links" id="navMenu" aria-label="Navegación principal">
-            <a href="#locales"     class="nav-link">Locales</a>
-            <a href="#experiencia" class="nav-link">Experiencia</a>
-            <a href="#ubicacion"   class="nav-link">Ubicación</a>
-            <!-- EDITA: href="#contacto" apunta al footer -->
-            <a href="#contacto"    class="nav-link nav-link-btn">Contáctanos</a>
+        <nav class="nav-links" id="navMenu">
+            <a href="#locales" class="nav-link">Locales</a>
+            <a href="#quienes" class="nav-link">Nosotros</a>
+            <a href="#ubicacion" class="nav-link">Ubicación</a>
+            <a href="#contacto" class="btn-primary nav-link-btn">Contáctanos</a>
         </nav>
-
     </header>
 
-
-    <main>
-
-        <!-- ══════════════════════════════════════════
-             HERO — Sección principal
-             ──────────────────────────────────────────
-             EDITA:
-             • h1: cambia el titular principal
-             • p:  cambia el subtítulo/descripción
-             • foto-principal.jpg → imagen del hero
-               (también en reset.css como fondo del body)
-             • Stats: edita data-count y data-suffix
-               de cada .stat-number + el .stat-label
-        ══════════════════════════════════════════ -->
-        <section class="hero-section" aria-label="Bienvenida">
-
-            <div class="hero-inner">
-
-                <!-- Texto principal -->
-                <div class="hero-content">
-                    <!-- EDITA: etiqueta pequeña sobre el título -->
-                    <div class="hero-eyebrow"
-                         data-aos="fade-up" data-aos-duration="600">
-                        <div class="hero-eyebrow-line"></div>
-                        <span>Centro Comercial Premium</span>
-                    </div>
-
-                    <!-- EDITA: título principal — usa <em> para el texto en dorado cursiva -->
-                    <h1 data-aos="fade-up" data-aos-delay="80" data-aos-duration="800">
-                        Tu nuevo<br>
-                        <em>punto de</em><br>
-                        encuentro.
-                    </h1>
-
-                    <!-- EDITA: descripción corta -->
-                    <p data-aos="fade-up" data-aos-delay="160" data-aos-duration="800">
-                        Ciudad Catador reúne lo mejor en gastronomía, comercio y
-                        entretenimiento. Un espacio diseñado para vivir, compartir y disfrutar.
-                    </p>
-
-                    <div class="hero-cta-group"
-                         data-aos="fade-up" data-aos-delay="240" data-aos-duration="800">
-                        <!-- EDITA: href del botón principal -->
-                        <a href="#locales" class="btn-primary">
-                            Explorar Locales
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                 stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M3 8h10M9 4l4 4-4 4"/>
-                            </svg>
-                        </a>
-                        <a href="#experiencia" class="btn-secondary">Ver experiencia</a>
-                    </div>
-                </div>
-
-                <!-- Imagen hero -->
-                <div class="hero-image-wrap"
-                     data-aos="fade-left" data-aos-delay="100" data-aos-duration="1000">
-
-                    <!-- EDITA: src → tu foto principal del local -->
-                    <img src="./assets/img/foto-principal.jpg"
-                         alt="Interior del Centro Comercial Ciudad Catador"
-                         width="600" height="560"
-                         loading="eager">
-
-                    <!-- Badge flotante sobre la imagen -->
-                    <div class="hero-badge" data-aos="fade-up" data-aos-delay="400">
-                        <div class="hero-badge-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
-                            </svg>
-                        </div>
-                        <div class="hero-badge-text">
-                            <!-- EDITA: texto del badge -->
-                            <span>Seguridad garantizada</span>
-                            <strong>100% Seguro</strong>
-                        </div>
-                    </div>
-
+    <!-- ==================== HERO ==================== -->
+    <section class="hero-section">
+        <div class="hero-inner">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <span class="hero-eyebrow">Ciudad Catador</span>
+                <h1>Tu nuevo<br>punto de <span>encuentro.</span></h1>
+                <p>El centro comercial diseñado para vivir experiencias únicas. Descubre las mejores tiendas, feria de comida, entretenimiento y servicios en un solo lugar.</p>
+                <div class="hero-actions">
+                    <a href="#locales" class="btn-primary">Explorar Locales</a>
+                    <a href="#ubicacion" class="btn-secondary">Ver Ubicación</a>
                 </div>
             </div>
+            
+            <div class="hero-image-wrap" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
+                <img 
+                    src="./assets/img/foto-principal.jpg" 
+                    alt="Centro Comercial Ciudad Catador" 
+                    width="560" 
+                    height="420"
+                    loading="lazy">
+            </div>
+        </div>
 
-            <!-- Stats animados
-                 EDITA: data-count = número final
-                        data-suffix = texto después del número (ej: "+", " días")
-                        .stat-label  = etiqueta debajo del número -->
-            <div class="hero-stats"
-                 data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+        <!-- Stats card -->
+        <div class="stats-glass-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Locales Comerciales</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Seguridad Garantizada</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">300+</span>
+                <span class="stat-label">Estacionamientos</span>
+            </div>
+        </div>
+    </section>
 
-                <div class="hero-stat">
-                    <span class="stat-number" data-count="15" data-suffix="+">15+</span>
-                    <span class="stat-label">Locales Comerciales</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="stat-number" data-count="300" data-suffix="+">300+</span>
-                    <span class="stat-label">Espacios de Parqueo</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="stat-number" data-count="7" data-suffix=" días">7 días</span>
-                    <span class="stat-label">Abierto toda la semana</span>
-                </div>
+    <!-- ==================== BENEFICIOS / QUÉ TE ESPERA ==================== -->
+    <section class="beneficios-section" id="beneficios">
+        <p class="section-label" data-aos="fade-up"><span>✦</span> Lo que nos hace únicos</p>
+        <h2 data-aos="fade-up" data-aos-delay="100">¿Qué te espera en Ciudad Catador?</h2>
+        
+        <div class="beneficios-diagram" data-aos="zoom-in" data-aos-duration="1200">
+            <!-- Anillos decorativos -->
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+            <div class="ring ring-4"></div>
 
+            <!-- Imagen central -->
+            <div class="diagram-center">
+                <img src="./assets/img/foto-principal.jpg" alt="Ciudad Catador centro">
             </div>
 
-        </section>
-
-
-        <!-- ══════════════════════════════════════════
-             LOCALES — Grilla de locales comerciales
-             ──────────────────────────────────────────
-             CÓMO AGREGAR UN LOCAL NUEVO:
-             1. Copia un bloque <article class="local-card">
-             2. Cambia data-image="foto-tulocal.jpg"
-                (la foto debe estar en assets/img/)
-             3. Cambia el href del <a> por el Instagram del local
-             4. Cambia el src del logo (en assets/img/)
-             5. Cambia el <h3> (nombre) y <p> (descripción)
-
-             NÚMERO DECORATIVO DE FONDO:
-             Si agregas más de 20 locales, edita también
-             el ::before de .locales-section en layout.css
-             (busca el comentario "EDITA ESTE NÚMERO").
-        ══════════════════════════════════════════ -->
-        <section id="locales" class="locales-section" aria-labelledby="locales-title">
-
-            <div class="section-header centered" data-aos="fade-up">
-                <div class="section-tag" style="justify-content:center">
-                    <div class="section-tag-line"></div>
-                    <!-- EDITA: etiqueta de sección -->
-                    <span>Nuestros Locales</span>
-                    <div class="section-tag-line"></div>
-                </div>
-                <!-- EDITA: título y descripción de la sección -->
-                <h2 id="locales-title">Marcas que hacen vida<br><em>en Ciudad Catador</em></h2>
-                <p>Cada local fue seleccionado para ofrecerte la mejor experiencia en gastronomía, estilo y servicio.</p>
+            <!-- Puntos orbitales -->
+            <div class="orbit-point">
+                <div class="orbit-dot"></div>
+                <p class="orbit-text">Más de 15 locales comerciales de primer nivel</p>
             </div>
-
-            <div class="locales-grid" data-aos="fade-up" data-aos-delay="100">
-
-                <!-- ── LOCAL 1 ── -->
-                <article class="local-card" data-image="foto-local1.jpg">
-                    <!-- EDITA: href → URL de Instagram o sitio web del local -->
-                    <a href="https://instagram.com/tu_local"
-                       target="_blank" rel="noopener noreferrer"
-                       class="local-link"
-                       aria-label="Visitar Local 1 en Instagram">
-                        <div class="local-logo">
-                            <!-- EDITA: src → logo del local (en assets/img/) -->
-                            <img src="./assets/img/logo-local1.png" alt="Logo Local 1" loading="lazy">
-                        </div>
-                        <div class="local-info">
-                            <h3>Nombre del Local</h3><!-- EDITA: nombre -->
-                            <p>Breve descripción de lo que ofrece este local comercial.</p><!-- EDITA: descripción -->
-                        </div>
-                        <div class="local-social-tag" aria-hidden="true">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                            Ver en Instagram
-                        </div>
-                    </a>
-                </article>
-
-                <!-- ── LOCAL 2: Mundo Novo ── -->
-                <article class="local-card" data-image="foto-mundonovo.jpg">
-                    <a href="https://instagram.com/gcmundonovo"
-                       target="_blank" rel="noopener noreferrer"
-                       class="local-link"
-                       aria-label="Mundo Novo en Instagram">
-                        <div class="local-logo">
-                            <img src="./assets/img/logo-local2.png" alt="Logo Mundo Novo" loading="lazy">
-                        </div>
-                        <div class="local-info">
-                            <h3>Mundo Novo</h3>
-                            <p>El mejor café y postres para compartir en familia.</p>
-                        </div>
-                        <div class="local-social-tag" aria-hidden="true">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                            Ver en Instagram
-                        </div>
-                    </a>
-                </article>
-
-                <!-- ── LOCAL 3: Bodegón Gran Catador ── -->
-                <article class="local-card" data-image="foto-grancatador.jpg">
-                    <a href="https://instagram.com/bodeongrancat"
-                       target="_blank" rel="noopener noreferrer"
-                       class="local-link"
-                       aria-label="Bodegón Gran Catador en Instagram">
-                        <div class="local-logo">
-                            <img src="./assets/img/logo-local3.png" alt="Logo Gran Catador" loading="lazy">
-                        </div>
-                        <div class="local-info">
-                            <h3>Bodegón Gran Catador</h3>
-                            <p>Licores exclusivos y la mejor charcutería de la ciudad.</p>
-                        </div>
-                        <div class="local-social-tag" aria-hidden="true">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                            Ver en Instagram
-                        </div>
-                    </a>
-                </article>
-
-                <!-- ── LOCAL 4 ── -->
-                <article class="local-card" data-image="foto-local4.jpg">
-                    <a href="https://instagram.com/tu_local"
-                       target="_blank" rel="noopener noreferrer"
-                       class="local-link"
-                       aria-label="Visitar Local 4 en Instagram">
-                        <div class="local-logo">
-                            <img src="./assets/img/logo-local4.png" alt="Logo Local 4" loading="lazy">
-                        </div>
-                        <div class="local-info">
-                            <h3>Nombre del Local</h3>
-                            <p>Breve descripción de lo que ofrece este local comercial.</p>
-                        </div>
-                        <div class="local-social-tag" aria-hidden="true">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                            Ver en Instagram
-                        </div>
-                    </a>
-                </article>
-
-                <!--
-                ╔══════════════════════════════════════════════════╗
-                ║  AGREGA MÁS LOCALES AQUÍ                        ║
-                ║  Copia el bloque LOCAL 4 y personalízalo.        ║
-                ╚══════════════════════════════════════════════════╝
-                -->
-
+            <div class="orbit-point">
+                <div class="orbit-dot"></div>
+                <p class="orbit-text">Feria de comida con cocinas del mundo</p>
             </div>
-        </section>
-
-
-        <!-- ══════════════════════════════════════════
-             EXPERIENCIA — Propuesta de valor + galería
-             ──────────────────────────────────────────
-             EDITA:
-             • Los 4 .feature-item: h4 (título) y p (descripción)
-             • Las 3 imágenes de .experiencia-gallery:
-               cambia src por fotos reales del espacio
-               (en assets/img/)
-        ══════════════════════════════════════════ -->
-        <section id="experiencia" class="experiencia-section" aria-labelledby="experiencia-title">
-
-            <div class="experiencia-inner">
-
-                <div>
-                    <div class="section-header" data-aos="fade-up">
-                        <div class="section-tag">
-                            <div class="section-tag-line"></div>
-                            <span>La Experiencia</span><!-- EDITA: etiqueta -->
-                        </div>
-                        <h2 id="experiencia-title">Más que un<br><em>centro comercial</em></h2>
-                        <p>Diseñado para que cada visita sea memorable. Aquí cada detalle importa.</p>
-                    </div>
-
-                    <div class="experiencia-features">
-
-                        <!-- EDITA: cambia el número, título y descripción de cada feature -->
-                        <div class="feature-item" data-aos="fade-up" data-aos-delay="60">
-                            <span class="feature-num">01</span>
-                            <div class="feature-body">
-                                <h4>Gastronomía de alto nivel</h4>
-                                <p>Feria de comida con propuestas curadas: desde cocina local hasta experiencias internacionales.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item" data-aos="fade-up" data-aos-delay="120">
-                            <span class="feature-num">02</span>
-                            <div class="feature-body">
-                                <h4>Ambiente seguro y exclusivo</h4>
-                                <p>Vigilancia 24/7, espacios controlados y estacionamiento privado para más de 300 vehículos.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item" data-aos="fade-up" data-aos-delay="180">
-                            <span class="feature-num">03</span>
-                            <div class="feature-body">
-                                <h4>Eventos y entretenimiento</h4>
-                                <p>Activaciones, conciertos íntimos y experiencias exclusivas para la comunidad.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item" data-aos="fade-up" data-aos-delay="240">
-                            <span class="feature-num">04</span>
-                            <div class="feature-body">
-                                <h4>Servicios integrales</h4>
-                                <p>Todo en un solo lugar: moda, bienestar, tecnología y más marcas que siguen llegando.</p>
-                            </div>
-                        </div>
-
-                        <!--
-                        Para agregar más features:
-                        Copia un bloque .feature-item y cambia el número,
-                        h4 y p. Aumenta data-aos-delay de 60 en 60.
-                        -->
-
-                    </div>
-                </div>
-
-                <!-- Galería editorial (3 fotos) -->
-                <div class="experiencia-gallery" data-aos="fade-left" data-aos-delay="100">
-                    <!-- EDITA: reemplaza los src con fotos reales del espacio -->
-                    <div class="gallery-img">
-                        <img src="./assets/img/foto-principal.jpg"
-                             alt="Ambiente Ciudad Catador — vista general" loading="lazy">
-                    </div>
-                    <div class="gallery-img">
-                        <!-- EDITA: segunda foto de galería -->
-                        <img src="./assets/img/local1.jpg"
-                             alt="Gastronomía en Ciudad Catador" loading="lazy">
-                    </div>
-                    <div class="gallery-img">
-                        <!-- EDITA: tercera foto de galería -->
-                        <img src="./assets/img/foto-principal.jpg"
-                             alt="Locales comerciales Ciudad Catador" loading="lazy">
-                    </div>
-                </div>
-
+            <div class="orbit-point">
+                <div class="orbit-dot"></div>
+                <p class="orbit-text">300+ espacios de estacionamiento seguro</p>
             </div>
-        </section>
+            <div class="orbit-point">
+                <div class="orbit-dot"></div>
+                <p class="orbit-text">Entretenimiento para toda la familia</p>
+            </div>
+            <div class="orbit-point">
+                <div class="orbit-dot"></div>
+                <p class="orbit-text">Eventos y activaciones cada semana</p>
+            </div>
+            <div class="orbit-point">
+                <div class="orbit-dot"></div>
+                <p class="orbit-text">Seguridad y vigilancia 24/7</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- ==================== LOCALES ==================== -->
+    <section id="locales" class="locales-section">
+        <div class="locales-header" data-aos="fade-up">
+            <p class="section-label"><span>✦</span> Nuestros comercios</p>
+            <h2>Locales comerciales de Ciudad Catador</h2>
+            <p>Conoce las marcas y servicios que hacen vida en nuestro centro comercial.</p>
+        </div>
 
-        <!-- ══════════════════════════════════════════
-             CTA ARRENDATARIOS — ¿Quieres abrir un local?
-             ──────────────────────────────────────────
-             EDITA:
-             • Título (h2) y descripción (p)
-             • href del botón principal → puede ser un
-               formulario, email o WhatsApp
-             • href de WhatsApp:
-               https://wa.me/57XXXXXXXXXX
-               (reemplaza XXXXXXXXXX con tu número)
-        ══════════════════════════════════════════ -->
-        <section class="arrendatarios-section" aria-labelledby="arrendatarios-title">
-
-            <div class="arrendatarios-inner" data-aos="fade-up">
-                <div class="arrendatarios-text">
-                    <div class="section-tag" style="margin-bottom:20px">
-                        <div class="section-tag-line"></div>
-                        <span>¿Tienes un negocio?</span>
+        <div class="locales-grid" data-aos="fade-up" data-aos-delay="100">
+            
+            <article class="local-card" data-image="foto-local1.jpg">
+                <a href="https://instagram.com/tu_local" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Visitar Local 1">
+                    <div class="local-logo">
+                        <img src="./assets/img/logo-local1.png" alt="Logo Local 1" loading="lazy">
                     </div>
-                    <h2 id="arrendatarios-title">
-                        Abre tu local en<br><em>Ciudad Catador</em>
-                    </h2>
-                    <p>Únete a una comunidad de marcas seleccionadas. Ofrecemos locales con alta
-                    visibilidad, excelente tráfico peatonal y todo el apoyo para que tu negocio prospere.</p>
-                </div>
-                <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
-                    <!-- EDITA: href → formulario de contacto o #contacto -->
-                    <a href="#contacto" class="btn-primary">
-                        Quiero un local
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                             stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M3 8h10M9 4l4 4-4 4"/>
-                        </svg>
-                    </a>
-                    <!-- EDITA: reemplaza 573000000000 con tu número de WhatsApp -->
-                    <a href="https://wa.me/573000000000"
-                       target="_blank" rel="noopener noreferrer"
-                       class="btn-secondary">
-                        WhatsApp
-                    </a>
+                    <div class="local-info">
+                        <h3>Nombre del Local</h3>
+                        <p>Breve descripción de lo que ofrece este local comercial.</p>
+                    </div>
+                </a>
+            </article>
+
+            <article class="local-card" data-image="foto-mundonovo.jpg">
+                <a href="https://instagram.com/gcmundonovo" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Visitar Mundo Novo">
+                    <div class="local-logo">
+                        <img src="./assets/img/logo-local2.png" alt="Logo Mundo Novo" loading="lazy">
+                    </div>
+                    <div class="local-info">
+                        <h3>Mundo Novo</h3>
+                        <p>El mejor café y postres para compartir en familia.</p>
+                    </div>
+                </a>
+            </article>
+
+            <article class="local-card" data-image="foto-grancatador.jpg">
+                <a href="https://instagram.com/bodeongrancat" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Bodegón Gran Catador">
+                    <div class="local-logo">
+                        <img src="./assets/img/logo-local3.png" alt="Logo Gran Catador" loading="lazy">
+                    </div>
+                    <div class="local-info">
+                        <h3>Bodegón Gran Catador</h3>
+                        <p>Licores exclusivos y la mejor charcutería de la ciudad.</p>
+                    </div>
+                </a>
+            </article>
+
+            <article class="local-card" data-image="foto-local4.jpg">
+                <a href="https://instagram.com/tu_local" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Visitar Local 4">
+                    <div class="local-logo">
+                        <img src="./assets/img/logo-local4.png" alt="Logo Local 4" loading="lazy">
+                    </div>
+                    <div class="local-info">
+                        <h3>Nombre del Local</h3>
+                        <p>Breve descripción de lo que ofrece este local comercial.</p>
+                    </div>
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIOS ==================== -->
+    <section class="testimonios-section" id="testimonios">
+        <div class="testimonios-header" data-aos="fade-up">
+            <h2>No lo tomes solo de<br><span>nuestra palabra.</span></h2>
+            <p>Cientos de visitantes ya viven la experiencia Ciudad Catador.</p>
+        </div>
+
+        <div class="testimonios-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonio-card">
+                <img src="./assets/img/testimonio1.jpg" alt="Testimonio 1" loading="lazy">
+                <div class="play-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
                 </div>
             </div>
-
-        </section>
-
-
-        <!-- ══════════════════════════════════════════
-             UBICACIÓN
-             ──────────────────────────────────────────
-             EDITA:
-             • "Calle 00 # 00-00, Ciudad, País" → dirección real
-             • "Lun–Vie 8am–8pm..." → horario real
-             • "300+ espacios..." → descripción del parqueadero
-             • El href de Google Maps → tu link real de Maps
-             • mapa-placeholder.jpg → captura de pantalla
-               del mapa de tu local en Google Maps
-        ══════════════════════════════════════════ -->
-        <section id="ubicacion" class="ubicacion-section" aria-labelledby="ubicacion-title">
-
-            <div class="ubicacion-inner">
-
-                <div>
-                    <div class="section-header" data-aos="fade-up">
-                        <div class="section-tag">
-                            <div class="section-tag-line"></div>
-                            <span>Ubicación</span>
-                        </div>
-                        <h2 id="ubicacion-title">¿Cómo<br><em>llegar?</em></h2>
-                    </div>
-
-                    <div class="ubicacion-details" data-aos="fade-up" data-aos-delay="80">
-
-                        <div class="ubicacion-detail-item">
-                            <div class="detail-icon" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                            </div>
-                            <div class="detail-text">
-                                <span>Dirección</span>
-                                <!-- EDITA: dirección real -->
-                                <p>Calle 00 # 00-00, Ciudad, País</p>
-                            </div>
-                        </div>
-
-                        <div class="ubicacion-detail-item">
-                            <div class="detail-icon" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                            </div>
-                            <div class="detail-text">
-                                <span>Horario</span>
-                                <!-- EDITA: horario real -->
-                                <p>Lun–Vie 8am–8pm · Sáb 9am–7pm · Dom 10am–5pm</p>
-                            </div>
-                        </div>
-
-                        <div class="ubicacion-detail-item">
-                            <div class="detail-icon" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="1" y="3" width="15" height="13" rx="1"/>
-                                    <path d="M16 8h4l3 3v5h-7V8z"/>
-                                    <circle cx="5.5"  cy="18.5" r="2.5"/>
-                                    <circle cx="18.5" cy="18.5" r="2.5"/>
-                                </svg>
-                            </div>
-                            <div class="detail-text">
-                                <span>Parqueadero</span>
-                                <!-- EDITA: descripción del parqueadero -->
-                                <p>300+ espacios disponibles. Ingreso por Calle 00.</p>
-                            </div>
-                        </div>
-
-                        <!-- EDITA: actualiza el link real de Google Maps -->
-                        <a href="https://maps.google.com/?q=Ciudad+Catador"
-                           target="_blank" rel="noopener noreferrer"
-                           class="link-arrow"
-                           style="margin-top:8px">
-                            Ver en Google Maps
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                 stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M3 8h10M9 4l4 4-4 4"/>
-                            </svg>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ubicacion-map-wrap" data-aos="fade-left">
-                    <!-- EDITA: reemplaza con captura de Google Maps de tu local -->
-                    <img src="./assets/img/mapa-placeholder.jpg"
-                         alt="Mapa de ubicación de Ciudad Catador"
-                         loading="lazy">
-                    <!-- Pin animado decorativo centrado sobre la imagen -->
-                    <div class="map-pin" aria-hidden="true">
-                        <div class="map-pin-dot"></div>
-                        <div class="map-pin-line"></div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-
-    <!-- ══════════════════════════════════════════
-         FOOTER — id="contacto" (el nav apunta aquí)
-         ──────────────────────────────────────────
-         EDITA:
-         • Logo: src del <img> en .footer-brand
-         • Descripción corta del centro comercial
-         • Redes sociales: href de cada .icon-btn
-           Instagram, Facebook, WhatsApp
-         • Horarios en .horarios-list
-         • Teléfono: "+57 300 000 0000"
-         • Email: "info@ciudadcatador.com"
-           → BUG FIX 9: el email está como texto plano aquí,
-             no como href (para evitar ofuscación automática
-             de Cloudflare/servidores). Si quieres hacerlo
-             enlazable: <a href="mailto:info@tudominio.com">
-         • Dirección: "Calle 00 # 00-00, Ciudad"
-         • Copyright: "&copy; 2025 Ciudad Catador"
-    ══════════════════════════════════════════ -->
-    <footer class="footer-section" id="contacto" aria-label="Pie de página">
-
-        <div class="footer-top">
-
-            <!-- Columna 1: Marca + redes -->
-            <div class="footer-brand">
-                <!-- EDITA: logo del footer -->
-                <img src="./assets/img/logo.png"
-                     alt="Ciudad Catador" width="140" height="38" loading="lazy">
-                <!-- EDITA: descripción corta -->
-                <p>Tu nuevo punto de encuentro. Un espacio diseñado para conectar personas, marcas y experiencias inolvidables.</p>
-                <div class="social-icons">
-                    <!-- EDITA: reemplaza href con tus URLs reales de redes sociales -->
-                    <a href="https://instagram.com/ciudadcatador"
-                       target="_blank" rel="noopener noreferrer"
-                       class="icon-btn" aria-label="Instagram de Ciudad Catador">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://facebook.com/ciudadcatador"
-                       target="_blank" rel="noopener noreferrer"
-                       class="icon-btn" aria-label="Facebook de Ciudad Catador">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                    <!-- EDITA: reemplaza 573000000000 con tu número -->
-                    <a href="https://wa.me/573000000000"
-                       target="_blank" rel="noopener noreferrer"
-                       class="icon-btn" aria-label="WhatsApp de Ciudad Catador">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    </a>
+            <div class="testimonio-card">
+                <img src="./assets/img/testimonio2.jpg" alt="Testimonio 2" loading="lazy">
+                <div class="play-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
                 </div>
             </div>
+            <div class="testimonio-card">
+                <img src="./assets/img/testimonio3.jpg" alt="Testimonio 3" loading="lazy">
+                <div class="play-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+                </div>
+            </div>
+            <div class="testimonio-card">
+                <img src="./assets/img/testimonio4.jpg" alt="Testimonio 4" loading="lazy">
+                <div class="play-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+                </div>
+            </div>
+        </div>
 
-            <!-- Columna 2: Horarios -->
-            <div class="footer-col">
-                <h4>Horarios</h4>
-                <!-- EDITA: ajusta los horarios reales -->
+        <div class="testimonios-footer" data-aos="fade-up">
+            <a href="#locales" class="btn-primary">Explorar locales</a>
+            <div class="avatars-grupo">
+                <div class="avatars-stack">
+                    <img src="./assets/img/avatar1.jpg" alt="visitante">
+                    <img src="./assets/img/avatar2.jpg" alt="visitante">
+                    <img src="./assets/img/avatar3.jpg" alt="visitante">
+                </div>
+                <p class="avatars-count"><strong>+500 visitantes</strong><br>cada fin de semana</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUIÉNES SOMOS ==================== -->
+    <section class="quienes-section" id="quienes" data-aos="fade-up">
+        <div class="quienes-bg-text">CATADOR</div>
+        <div class="quienes-content">
+            <h2>¿Qué es</h2>
+            <p class="quienes-title">CIUDAD<br><span>CATADOR?</span></p>
+            <div class="quienes-description">
+                <p>Ciudad Catador no es simplemente un centro comercial: es un <strong>catalizador de experiencias</strong>, un espacio donde el diseño, la gastronomía y el comercio se encuentran para transformar cada visita en un momento memorable.</p>
+                <p>Con más de 15 locales cuidadosamente seleccionados, Ciudad Catador se posiciona como el destino ideal para quienes buscan calidad, variedad y una experiencia de compra que va más allá de lo ordinario.</p>
+                <p>El espacio estará disponible por poco tiempo. <strong>¡No pierdas la oportunidad de ser parte de esta experiencia única!</strong></p>
+            </div>
+            <a href="#contacto" class="btn-primary" style="margin-top: 32px;">Quiero más información</a>
+        </div>
+    </section>
+
+    <!-- ==================== UBICACIÓN ==================== -->
+    <section id="ubicacion" class="ubicacion-section" data-aos="fade-up">
+        <div class="ubicacion-content">
+            <div class="ubicacion-text">
+                <p class="section-label"><span>✦</span> Encuéntranos</p>
+                <h2>¿Dónde nos encontramos?</h2>
+                <p>Visita nuestro centro comercial y vive la experiencia Ciudad Catador. Contamos con fácil acceso, amplio parqueadero y excelente ubicación.</p>
+                <a href="https://maps.google.com/?q=Ciudad+Catador" target="_blank" rel="noopener noreferrer" class="link-arrow">
+                    Ver en Google Maps
+                </a>
+            </div>
+            <div class="ubicacion-map">
+                <img src="./assets/img/mapa-placeholder.jpg" alt="Mapa ubicación Ciudad Catador" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer-section" id="contacto">
+        <div class="footer-content">
+            
+            <div class="footer-box horarios-box" data-aos="fade-up">
+                <h3>Horarios</h3>
                 <ul class="horarios-list">
-                    <li>Lunes – Viernes <span>8am – 8pm</span></li>
-                    <li>Sábados          <span>9am – 7pm</span></li>
-                    <li>Domingos         <span>10am – 5pm</span></li>
+                    <li>Lunes – Viernes <span>9am – 8pm</span></li>
+                    <li>Sábado <span>9am – 9pm</span></li>
+                    <li>Domingo <span>10am – 6pm</span></li>
+                    <li>Festivos <span>10am – 6pm</span></li>
                 </ul>
             </div>
 
-            <!-- Columna 3: Contacto -->
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <ul class="footer-contact">
-                    <li>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-                        </svg>
-                        <!-- EDITA: teléfono real -->
-                        <a href="tel:+573000000000">+57 300 000 0000</a>
-                    </li>
-                    <li>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <!--
-                        BUG FIX 9: Email como enlace mailto: directo.
-                        Evita la ofuscación automática de proxies.
-                        EDITA: cambia el correo aquí en ambos lugares.
-                        -->
-                        <a href="mailto:info@ciudadcatador.com">info@ciudadcatador.com</a>
-                    </li>
-                    <li>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        <!-- EDITA: dirección real -->
-                        Calle 00 # 00-00, Ciudad
-                    </li>
+            <div class="footer-box" data-aos="fade-up" data-aos-delay="100">
+                <h3>Contacto</h3>
+                <ul class="horarios-list">
+                    <li>WhatsApp <span>+57 300 000 0000</span></li>
+                    <li>Email <span>info@ciudadcatador.com</span></li>
+                    <li>Dirección <span>Tu ciudad, País</span></li>
                 </ul>
             </div>
 
+            <div class="footer-social" data-aos="fade-up" data-aos-delay="150">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- Barra inferior: copyright + links legales -->
         <div class="footer-bottom">
-            <!-- EDITA: año y nombre legal del negocio -->
-            <p>&copy; 2025 Ciudad Catador. Todos los derechos reservados.</p>
-            <div class="footer-bottom-links">
-                <!-- EDITA: agrega href reales si tienes páginas de política/términos -->
-                <a href="#">Política de privacidad</a>
-                <a href="#">Términos de uso</a>
-            </div>
+            <p>© 2025 Ciudad Catador. Todos los derechos reservados.</p>
+            <p>Diseñado con ♥ para nuestra comunidad</p>
         </div>
-
     </footer>
 
-
-    <!-- Scripts — siempre al final del <body> -->
+    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Main JS -->
     <script src="./js/main.js"></script>
 
 </body>

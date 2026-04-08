@@ -1,99 +1,73 @@
 :root {
-    /* ============================================
-       TIPOGRAFÍA — Editorial + Moderno
-       ============================================ */
-    --font-title:   'Cormorant Garamond', Georgia, serif;
-    --font-text:    'DM Sans', sans-serif;
+    /* TIPOGRAFÍA */
+    --font-title: 'Poppins', sans-serif;
+    --font-text: 'Montserrat', sans-serif;
 
-    --fs-xs:   0.70rem;
-    --fs-sm:   0.825rem;
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
     --fs-base: 1rem;
-    --fs-lg:   1.125rem;
-    --fs-xl:   1.375rem;
-    --fs-2xl:  1.75rem;
-    --fs-3xl:  2.25rem;
-    --fs-4xl:  3rem;
-    --fs-5xl:  4.5rem;
-    --fs-6xl:  6.5rem;
-    --fs-hero: clamp(3.5rem, 9vw, 7.5rem);
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
+    --fs-2xl: 1.5rem;
+    --fs-3xl: 1.875rem;
+    --fs-4xl: 2.25rem;
+    --fs-5xl: 3rem;
+    --fs-6xl: 3.75rem;
 
-    --fw-light:     300;
-    --fw-regular:   400;
-    --fw-medium:    500;
-    --fw-semibold:  600;
-    --fw-bold:      700;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
     --fw-extrabold: 800;
 
-    /* ============================================
-       COLORES — Luxury Dark + Gold
-       ============================================ */
-    --bg-primary:   #08090d;
-    --bg-secondary: #0d0f16;
-    --bg-card:      #10121a;
-    --bg-dark:      #08090d;
+    /* COLORES — estilo VSL oscuro azulado */
+    --bg-primary: #03050f;
+    --bg-secondary: #060c1e;
+    --bg-dark: #03050f;
+    --bg-card: rgba(6, 12, 40, 0.8);
 
-    --gold-light:  #f0d080;
-    --gold:        #d4a843;
-    --gold-dark:   #a07828;
-    --gold-subtle: rgba(212, 168, 67, 0.08);
-    --gold-border: rgba(212, 168, 67, 0.25);
-    --acento:      #d4a843;
+    --blanco: #ffffff;
+    --gris-marca: rgba(180, 200, 230, 0.7);
+    --acento: #d4af37;
+    --acento-hover: #e5c158;
+    --azul-glow: #1a3cff;
+    --azul-medio: #0a1a6b;
 
-    --blanco:       #f5f0e8;
-    --text-primary: #f5f0e8;
-    --text-muted:   #8a8d99;
-    --gris-marca:   #8a8d99;
-    --text-dim:     rgba(245, 240, 232, 0.45);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(180, 200, 230, 0.8);
 
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-light:  rgba(255, 255, 255, 0.10);
-    --border-medium: rgba(255, 255, 255, 0.18);
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(212, 175, 55, 0.4);
 
-    /* ============================================
-       ESPACIADO
-       ============================================ */
-    --sp-xs:  0.25rem;
-    --sp-sm:  0.5rem;
-    --sp-md:  1rem;
-    --sp-lg:  1.5rem;
-    --sp-xl:  2rem;
+    /* ESPACIADO */
+    --sp-xs: 0.25rem;
+    --sp-sm: 0.5rem;
+    --sp-md: 1rem;
+    --sp-lg: 1.5rem;
+    --sp-xl: 2rem;
     --sp-2xl: 3rem;
     --sp-3xl: 4rem;
     --sp-4xl: 5rem;
     --sp-5xl: 6rem;
 
-    /* ============================================
-       BORDES
-       ============================================ */
-    --radius-sm:   4px;
-    --radius-md:   8px;
-    --radius-lg:   14px;
-    --radius-xl:   20px;
-    --radius-2xl:  28px;
+    /* BORDES */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
     --radius-full: 9999px;
 
-    /* ============================================
-       SOMBRAS
-       ============================================ */
-    --shadow-gold:  0 0 40px rgba(212, 168, 67, 0.15);
-    --shadow-card:  0 8px 40px rgba(0, 0, 0, 0.5);
-    --shadow-lg:    0 20px 60px rgba(0, 0, 0, 0.6);
-    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
+    /* SOMBRAS */
+    --shadow-glow: 0 0 40px rgba(26, 60, 255, 0.25);
+    --shadow-acento: 0 0 30px rgba(212, 175, 55, 0.3);
+    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.6);
 
-    /* ============================================
-       TRANSICIONES
-       ============================================ */
-    --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-base: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-slow: 0.6s  cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
 
-    /* ============================================
-       LAYOUT
-       ============================================ */
-    --container-max:     1240px;
-    --container-padding: clamp(1.5rem, 6vw, 7rem);
-    --section-padding:   clamp(5rem, 10vw, 9rem);
+    --container-max: 1200px;
+    --container-padding: 5%;
 }
 
 @media (prefers-reduced-motion: reduce) {
