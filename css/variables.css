@@ -33,13 +33,18 @@
     --bg-secondary: #001a58;
     --bg-tertiary: #00113a;
     --bg-dark-gradient: linear-gradient(135deg, #020b1e 0%, #00113a 100%);
+
+    /* FIX: Aliases usados en layout.css, components.css y reset.css */
+    --bg-dark: #020b1e;          /* alias de --bg-primary */
+    --acento: #d4af37;           /* alias de --accent-primary */
+    --gris-marca: #b8c5d6;       /* alias de --text-secondary */
     
     /* Texto */
     --text-primary: #ffffff;
     --text-secondary: #b8c5d6;  /* 5.2:1 ratio - WCAG AA ✅ */
     --text-tertiary: #8a96a8;   /* 3.8:1 ratio - solo para emphasis mínima */
     --text-inverse: #001a58;
-    --blanco: #ffffff; /* AGREGADO: Variable faltante */
+    --blanco: #ffffff;
     
     /* Acentos */
     --accent-primary: #d4af37;   /* 5.2:1 ratio - WCAG AA ✅ */

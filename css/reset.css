@@ -32,7 +32,6 @@ body::before {
     pointer-events: none;
 }
 
-/* Evitar que el pseudo-elemento afecte al scroll */
 html {
     scroll-behavior: smooth;
 }

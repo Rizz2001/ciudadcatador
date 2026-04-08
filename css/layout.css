@@ -104,14 +104,20 @@
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 30px 20px;
-    text-align: center;
-    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+/* FIX: El <a> dentro de la card debe ocupar todo el espacio y manejar el layout */
+.local-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
-    transition: all 0.4s ease;
+    text-align: center;
+    padding: 30px 20px;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
 }
 
 .local-card::before {
@@ -173,6 +179,51 @@
     font-size: 0.9rem;
 }
 
+/* === SECCIÓN UBICACIÓN === */
+.ubicacion-section {
+    padding: 80px 10%;
+    position: relative;
+    z-index: 1;
+}
+
+.ubicacion-content {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.ubicacion-text {
+    flex: 1;
+}
+
+.ubicacion-text h2 {
+    font-size: 2.5rem;
+    color: var(--blanco);
+    margin-bottom: 20px;
+}
+
+.ubicacion-text p {
+    color: var(--gris-marca);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.ubicacion-map {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ubicacion-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 300px;
+}
+
 /* === FOOTER === */
 .footer-section {
     background-color: rgba(0, 11, 30, 0.95);
@@ -189,10 +240,22 @@
     gap: 40px;
 }
 
+.footer-box h3 {
+    color: var(--blanco);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-family: var(--font-title);
+}
+
+.horarios-list {
+    list-style: none;
+}
+
 .horarios-list li {
     color: var(--gris-marca);
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     padding-bottom: 10px;
     margin-bottom: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -205,6 +268,12 @@
 
 .footer-social {
     text-align: right;
+}
+
+.footer-social p {
+    color: var(--gris-marca);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
 }
 
 .social-icons {
@@ -223,12 +292,22 @@
     border-radius: 50%;
     color: var(--blanco);
     transition: all 0.3s;
+    text-decoration: none;
 }
 
 .icon-btn:hover {
     background: var(--acento);
     color: #000;
     transform: translateY(-5px);
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    color: var(--gris-marca);
+    font-size: 0.85rem;
 }
 
 /* ===================================
@@ -293,6 +372,15 @@
 
     .locales-grid {
         grid-template-columns: 1fr;
+    }
+
+    .ubicacion-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .ubicacion-text h2 {
+        font-size: 2rem;
     }
 
     .footer-social {
