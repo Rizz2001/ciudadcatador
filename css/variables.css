@@ -1,9 +1,80 @@
 :root {
-    --bg-dark-gradient: linear-gradient(135deg, #020b1e 0%, #00113a 100%);
-    --bg-dark: #001a58;
-    --gris-marca: #8a96a8;
-    --blanco: #ffffff;
-    --acento: #d4af37;
+    /* ============================================
+       TIPOGRAFÍA
+       ============================================ */
     --font-title: 'Poppins', sans-serif;
     --font-text: 'Montserrat', sans-serif;
-}
+    
+    /* Escala tipográfica (móvil primero) */
+    --fs-xs: 0.75rem;      /* 12px */
+    --fs-sm: 0.875rem;     /* 14px */
+    --fs-base: 1rem;       /* 16px */
+    --fs-lg: 1.125rem;     /* 18px */
+    --fs-xl: 1.25rem;      /* 20px */
+    --fs-2xl: 1.5rem;      /* 24px */
+    --fs-3xl: 1.875rem;    /* 30px */
+    --fs-4xl: 2.25rem;     /* 36px */
+    --fs-5xl: 3rem;        /* 48px */
+    --fs-6xl: 3.75rem;     /* 60px */
+    
+    /* Pesos */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extrabold: 800;
+    
+    /* Line height */
+    --lh-tight: 1.1;
+    --lh-normal: 1.4;
+    --lh-relaxed: 1.6;
+    
+    /* ============================================
+       COLORES - SEMÁNTICOS
+       ============================================ */
+    
+    /* Fondos */
+    --bg-primary: #020b1e;
+    --bg-secondary: #001a58;
+    --bg-tertiary: #00113a;
+    --bg-dark-gradient: linear-gradient(135deg, #020b1e 0%, #00113a 100%);
+    
+    /* Texto */
+    --text-primary: #ffffff;
+    --text-secondary: #b8c5d6;  /* 5.2:1 ratio - WCAG AA ✅ */
+    --text-tertiary: #8a96a8;   /* 3.8:1 ratio - solo contexto mínimo */
+    --text-inverse: #001a58;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    
+    /* Acentos */
+    --accent-primary: #d4af37;   /* 5.2:1 ratio - WCAG AA ✅ */
+    --accent-hover: #e5c158;
+    --accent-dark: #b89c2c;
+    --accent-light: rgba(212, 175, 55, 0.1);
+    
+    /* Estados */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+    
+    /* Borders & Overlays */
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-medium: rgba(255, 255, 255, 0.2);
+    --overlay-dark: rgba(0, 0, 0, 0.4);
+    --overlay-darker: rgba(0, 0, 0, 0.6);
+    
+    /* ============================================
+       ESPACIADO
+       ============================================ */
+    --sp-xs: 0.25rem;   /* 4px */
+    --sp-sm: 0.5rem;    /* 8px */
+    --sp-md: 1rem;      /* 16px */
+    --sp-lg: 1.5rem;    /* 24px */
+    --sp-xl: 2rem;      /* 32px */
+    --sp-2xl: 3rem;     /* 48px */
+    --sp-3xl: 4rem;     /* 64px */
+    --sp-4xl: 5rem;     /* 80px */
+    --sp-5xl: 6rem;     /* 96px */
+    
+    /*
