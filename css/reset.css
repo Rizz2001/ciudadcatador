@@ -1,37 +1,69 @@
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+/* Cursor dorado personalizado */
+*, a, button {
+    cursor: none !important;
+}
+
 body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-text);
+    font-weight: var(--fw-regular);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain texture overlay — da profundidad y aleja del look de template */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+}
+
+/* Imagen de fondo con overlay refinado */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
     background-image: url('../assets/img/foto-principal.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    color: var(--text-primary);
-    font-family: var(--font-text);
-    overflow-x: hidden;
-    min-height: 100vh;
-    position: relative;
-    z-index: 0;
-}
-
-body::before {
-    content: '';
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 26, 88, 0.75); 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    /* Overlay más sutil — no aplasta la foto */
+    background-color: rgba(8, 9, 13, 0.82);
+    background-blend-mode: multiply;
     z-index: -1;
     pointer-events: none;
 }
 
-html {
-    scroll-behavior: smooth;
+img { max-width: 100%; display: block; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { background: none; border: none; font-family: inherit; }
+
+/* Selección de texto en dorado */
+::selection {
+    background: var(--gold);
+    color: var(--bg-primary);
 }

@@ -1,4 +1,3 @@
-/* IMPORTANTE: variables.css debe ir primero para que los demás archivos puedan usar las custom properties */
 @import 'variables.css';
 @import 'reset.css';
 @import 'layout.css';
