@@ -1,4 +1,8 @@
-/* --- BOTONES --- */
+/* ===================================
+   BOTONES - COMPONENTES
+   =================================== */
+
+/* BOTÓN PRIMARY (Principal) */
 .btn-primary {
     background-color: var(--blanco);
     color: var(--bg-dark);
@@ -36,7 +40,45 @@
     box-shadow: none;
 }
 
-/* --- BOTÓN TEXTO --- */
+/* BOTÓN SECONDARY (Alternativo) */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--blanco);
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: 2px solid var(--blanco);
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--acento);
+    border-color: var(--acento);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+}
+
+.btn-secondary:focus {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary:disabled {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+}
+
+/* BOTÓN TEXTO (Mínimalista) */
 .btn-text {
     color: var(--blanco);
     text-decoration: none;
@@ -47,18 +89,27 @@
     transition: all 0.3s ease;
 }
 
-.btn-text:hover,
-.btn-text:focus {
+.btn-text:hover {
     color: var(--acento);
     background: rgba(212, 175, 55, 0.1);
 }
 
 .btn-text:focus {
+    color: var(--acento);
+    background: rgba(212, 175, 55, 0.1);
     outline: 2px solid var(--acento);
     outline-offset: 2px;
 }
 
-/* --- LINK CON FLECHA --- */
+.btn-text:active {
+    transform: scale(0.96);
+}
+
+/* ===================================
+   LINKS - COMPONENTES
+   =================================== */
+
+/* LINK CON FLECHA */
 .link-arrow {
     color: var(--blanco);
     text-decoration: underline;
@@ -84,7 +135,10 @@
     outline-offset: 3px;
 }
 
-/* --- TARJETA GLASS --- */
+/* ===================================
+   TARJETA GLASS (Efecto Glassmorphism)
+   =================================== */
+
 .stats-glass-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
@@ -125,21 +179,53 @@
     font-weight: 800;
 }
 
-/* --- RESPONSIVE --- */
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
 @media (max-width: 768px) {
+    /* Botones responsive */
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    /* Tarjeta glass en mobile */
     .stats-glass-card {
         position: static;
         margin-top: 40px;
         padding: 20px 30px;
         flex-direction: column;
+        width: 100%;
+        left: auto;
+        bottom: auto;
     }
-    
+
     .stat-item {
         padding: 15px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .stat-item:last-child {
         border-bottom: none;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra pequeño */
+    .btn-primary,
+    .btn-secondary,
+    .btn-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .link-arrow {
+        font-size: 1rem;
     }
 }

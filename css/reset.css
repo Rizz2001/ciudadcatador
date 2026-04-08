@@ -4,13 +4,13 @@
     box-sizing: border-box;
 }
 
-/* 1. Ponemos la imagen de fondo anclada a la pantalla */
 body {
-    background-image: url('../assets/img/foto-principal.jpg'); /* Llama a tu foto */
-    background-size: cover; /* Hace que cubra toda la pantalla */
+    background-image: url('../assets/img/foto-principal.jpg');
+    background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* EFECTO PREMIUM: La foto se queda quieta al hacer scroll */
-    color: var(--blanco);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--text-primary);
     font-family: var(--font-text);
     overflow-x: hidden;
     min-height: 100vh;
@@ -18,7 +18,6 @@ body {
     z-index: 0;
 }
 
-/* 2. LA MAGIA: La capa de espejo desenfocado AZUL MARINO */
 body::before {
     content: '';
     position: fixed; 
@@ -26,14 +25,14 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    
-    /* El truco: Tu azul corporativo exacto, pero con 75% de transparencia */
     background: rgba(0, 26, 88, 0.75); 
-    
-    backdrop-filter: blur(15px); /* El efecto de cristal empañado */
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    z-index: -1; 
+    z-index: -1;
+    pointer-events: none;
 }
-h1, h2, h3 {
-    font-family: var(--font-title);
+
+/* Evitar que el pseudo-elemento afecte al scroll */
+html {
+    scroll-behavior: smooth;
 }

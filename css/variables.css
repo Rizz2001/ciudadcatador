@@ -39,6 +39,7 @@
     --text-secondary: #b8c5d6;  /* 5.2:1 ratio - WCAG AA ✅ */
     --text-tertiary: #8a96a8;   /* 3.8:1 ratio - solo para emphasis mínima */
     --text-inverse: #001a58;
+    --blanco: #ffffff; /* AGREGADO: Variable faltante */
     
     /* Acentos */
     --accent-primary: #d4af37;   /* 5.2:1 ratio - WCAG AA ✅ */
@@ -102,23 +103,8 @@
        ============================================ */
     --container-max: 1200px;
     --container-padding: 5%;
-    
-    /* Breakpoints (para documentación - no usables en @media) */
-    /* Mobile: <640px | Tablet: 640px-1024px | Desktop: >1024px */
 }
 
-/* ============================================
-   TEMA OSCURO (cuando sea necesario)
-   ============================================ */
-@media (prefers-color-scheme: dark) {
-    :root {
-        /* Si en el futuro necesitas un tema diferente */
-    }
-}
-
-/* ============================================
-   ACCESIBILIDAD: Respeto a preferencias
-   ============================================ */
 @media (prefers-reduced-motion: reduce) {
     :root {
         --transition-fast: 0s;

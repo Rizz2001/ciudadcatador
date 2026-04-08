@@ -1,4 +1,4 @@
-/* --- CABECERA --- */
+/* === CABECERA === */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -11,6 +11,7 @@
     height: auto;
     width: 180px;
 }
+
 .nav-toggle {
     display: none;
     background: none;
@@ -20,27 +21,6 @@
     font-size: 1.5rem;
 }
 
-@media (max-width: 640px) {
-    .nav-toggle { display: block; }
-    
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--bg-dark);
-        flex-direction: column;
-        gap: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s;
-    }
-    
-    .nav-links.active {
-        max-height: 300px;
-        padding: 20px;
-    }
-}
 .nav-links {
     display: flex;
     gap: 30px;
@@ -58,7 +38,7 @@
     color: var(--acento);
 }
 
-/* --- SECCIÓN PRINCIPAL (HERO) --- */
+/* === SECCIÓN PRINCIPAL (HERO) === */
 .hero-section {
     display: flex;
     flex-direction: column;
@@ -70,14 +50,6 @@
     line-height: 1.1;
 }
 
-@media (min-width: 769px) {
-    .hero-section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: 50px 10%;
-    }
-    .hero-content h1 { font-size: 4.5rem; }
-}
 .hero-content p {
     font-size: 1.1rem;
     color: var(--gris-marca);
@@ -93,12 +65,12 @@
 .hero-image img {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     z-index: 2;
     position: relative;
 }
 
-/* --- SECCIÓN DE LOCALES CON EFECTO ESPEJO --- */
+/* === SECCIÓN DE LOCALES CON EFECTO ESPEJO === */
 .locales-section {
     padding: 100px 10%;
     position: relative;
@@ -145,7 +117,10 @@
 .local-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: var(--bg-local);
     background-size: cover;
     background-position: center;
@@ -154,7 +129,8 @@
     transition: all 0.5s ease;
 }
 
-.local-logo, .local-info {
+.local-logo,
+.local-info {
     position: relative;
     z-index: 1;
 }
@@ -162,7 +138,7 @@
 .local-card:hover {
     border-color: var(--acento);
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .local-card:hover::before {
@@ -183,7 +159,7 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
 }
 
 .local-info h3 {
@@ -197,7 +173,7 @@
     font-size: 0.9rem;
 }
 
-/* --- FOOTER --- */
+/* === FOOTER === */
 .footer-section {
     background-color: rgba(0, 11, 30, 0.95);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -255,28 +231,75 @@
     transform: translateY(-5px);
 }
 
-/* --- RESPONSIVE PREMIUM --- */
-@media (max-width: 768px) {
-    .navbar { flex-direction: column; gap: 15px; }
-    .logo img { width: 140px !important; }
-    
-    .hero-section { display: flex !important; flex-direction: column !important; text-align: center; }
-    .hero-content h1 { font-size: 2.5rem !important; }
-    
-    .stats-glass-card {
-        position: relative !important;
-        width: 100% !important;
-        flex-direction: column !important;
-        margin-top: 30px !important;
-        left: 0 !important;
-        bottom: 0 !important;
-    }
-    
-    .stat-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 0; }
-    .stat-item:last-child { border-bottom: none; }
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
 
-    .grid { grid-template-columns: 1fr; }
-    
-    .footer-social { text-align: center; }
-    .social-icons { justify-content: center; }
+/* TABLET Y SUPERIOR (769px+) */
+@media (min-width: 769px) {
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 50px 10%;
+    }
+
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+}
+
+/* MOBILE (hasta 768px) */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+    }
+
+    .nav-links.active {
+        max-height: 300px;
+        padding: 20px;
+    }
+
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .locales-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-social {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
 }
