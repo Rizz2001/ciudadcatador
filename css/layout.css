@@ -11,7 +11,36 @@
     height: auto;
     width: 180px;
 }
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--blanco);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
 
+@media (max-width: 640px) {
+    .nav-toggle { display: block; }
+    
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+    }
+    
+    .nav-links.active {
+        max-height: 300px;
+        padding: 20px;
+    }
+}
 .nav-links {
     display: flex;
     gap: 30px;
@@ -31,40 +60,24 @@
 
 /* --- SECCIÓN PRINCIPAL (HERO) --- */
 .hero-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 50px 10%;
-    min-height: 90vh;
-    position: relative;
-    align-items: center;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: rgba(212, 175, 55, 0.1);
-    filter: blur(150px);
-    top: 10%;
-    left: 5%;
-    border-radius: 50%;
-    z-index: -1;
-}
-
-.hero-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    z-index: 2;
+    padding: 30px 5%;
 }
 
 .hero-content h1 {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     line-height: 1.1;
-    margin-bottom: 20px;
 }
 
+@media (min-width: 769px) {
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 50px 10%;
+    }
+    .hero-content h1 { font-size: 4.5rem; }
+}
 .hero-content p {
     font-size: 1.1rem;
     color: var(--gris-marca);
@@ -262,7 +275,7 @@
     .stat-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 0; }
     .stat-item:last-child { border-bottom: none; }
 
-    .locales-grid { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
     
     .footer-social { text-align: center; }
     .social-icons { justify-content: center; }
