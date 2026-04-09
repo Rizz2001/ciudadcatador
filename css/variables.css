@@ -1,6 +1,5 @@
 /* ============================================
    CIUDAD CATADOR — DESIGN TOKENS
-   Auditoría: variables unificadas, tipografía fluida con clamp()
    ============================================ */
 
 :root {
@@ -8,7 +7,7 @@
     --font-title: 'Poppins', sans-serif;
     --font-text: 'Montserrat', sans-serif;
 
-    /* Escala fluida con clamp() — mobile-first */
+    /* Escala fluida con clamp() */
     --fs-xs: 0.75rem;
     --fs-sm: 0.875rem;
     --fs-base: 1rem;
@@ -28,38 +27,29 @@
     --fw-extrabold: 800;
 
     /* ── COLORES ── */
-
-    /* Fondos */
     --bg-primary: #020b1e;
     --bg-secondary: #001a58;
     --bg-tertiary: #00113a;
     --bg-dark: #020b1e;
-    --bg-dark-gradient: linear-gradient(135deg, #020b1e 0%, #00113a 100%);
 
-    /* Texto */
     --text-primary: #ffffff;
     --text-secondary: #b8c5d6;
     --text-tertiary: #8a96a8;
     --text-inverse: #001a58;
     --blanco: #ffffff;
-
-    /* Gris marca (alias semántico) */
     --gris-marca: #b8c5d6;
 
-    /* Acentos */
     --acento: #d4af37;
     --accent-primary: #d4af37;
     --accent-hover: #e5c158;
     --accent-dark: #b89c2c;
     --accent-glow: rgba(212, 175, 55, 0.3);
 
-    /* Estados */
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
     --info: #3b82f6;
 
-    /* Borders & Overlays */
     --border-light: rgba(255, 255, 255, 0.1);
     --border-medium: rgba(255, 255, 255, 0.2);
     --overlay-dark: rgba(0, 0, 0, 0.4);
@@ -78,11 +68,12 @@
     --sp-4xl: 5rem;
     --sp-5xl: 6rem;
 
-    /* Sección padding (fluido) */
-    --section-padding-x: clamp(5%, 3rem, 10%);
+    /* FIX: padding de secciones — sin mezclar % con rem en clamp.
+       Usamos 5% directo (funciona en todos los navegadores) */
+    --section-padding-x: 5%;
     --section-padding-y: clamp(3rem, 5vw, 6rem);
 
-    /* ── BORDES Y ESQUINAS ── */
+    /* ── BORDES ── */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 16px;
@@ -109,6 +100,19 @@
     --container-max: 1200px;
     --container-padding: 5%;
     --navbar-height: 80px;
+}
+
+/* Responsive: más padding en desktop */
+@media (min-width: 769px) {
+    :root {
+        --section-padding-x: 8%;
+    }
+}
+
+@media (min-width: 1200px) {
+    :root {
+        --section-padding-x: 10%;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

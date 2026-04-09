@@ -1,13 +1,12 @@
 /* ============================================
    COMPONENTES — CIUDAD CATADOR
-   Botones, links, tarjeta glass, estados
    ============================================ */
 
 /* ── BOTÓN PRIMARY ── */
 .btn-primary {
     background-color: var(--blanco);
     color: var(--bg-dark);
-    padding: var(--sp-md) var(--sp-xl);
+    padding: 12px 28px;
     border-radius: var(--radius-full);
     border: 2px solid transparent;
     font-family: var(--font-text);
@@ -27,7 +26,7 @@
     box-shadow: var(--shadow-accent);
 }
 
-.btn-primary:focus-visible {
+.btn-primary:focus {
     outline: 2px solid var(--acento);
     outline-offset: 3px;
     box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
@@ -49,7 +48,7 @@
 .btn-secondary {
     background-color: transparent;
     color: var(--blanco);
-    padding: var(--sp-md) var(--sp-xl);
+    padding: 12px 28px;
     border-radius: var(--radius-full);
     border: 2px solid var(--blanco);
     font-family: var(--font-text);
@@ -69,7 +68,7 @@
     box-shadow: var(--shadow-accent);
 }
 
-.btn-secondary:focus-visible {
+.btn-secondary:focus {
     outline: 2px solid var(--acento);
     outline-offset: 3px;
 }
@@ -89,7 +88,7 @@
     color: var(--blanco);
     text-decoration: none;
     font-weight: var(--fw-semibold);
-    padding: var(--sp-sm) var(--sp-md);
+    padding: 8px 12px;
     border-radius: var(--radius-sm);
     display: inline-block;
     transition: all var(--transition-base);
@@ -100,7 +99,7 @@
     background: rgba(212, 175, 55, 0.1);
 }
 
-.btn-text:focus-visible {
+.btn-text:focus {
     color: var(--acento);
     outline: 2px solid var(--acento);
     outline-offset: 2px;
@@ -125,12 +124,13 @@
 }
 
 .link-arrow::after {
-    content: '→';
+    content: '\2192';
     transition: transform var(--transition-base);
+    display: inline-block;
 }
 
 .link-arrow:hover,
-.link-arrow:focus-visible {
+.link-arrow:focus {
     color: var(--acento);
     text-decoration-color: var(--acento);
 }
@@ -139,7 +139,7 @@
     transform: translateX(4px);
 }
 
-.link-arrow:focus-visible {
+.link-arrow:focus {
     outline: 2px dashed var(--acento);
     outline-offset: 3px;
 }
@@ -151,15 +151,14 @@
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-2xl);
-    padding: var(--sp-2xl) var(--sp-3xl);
+    padding: var(--sp-2xl) var(--sp-xl);
     display: flex;
     justify-content: space-around;
     gap: var(--sp-xl);
-    /* FIX: posición absoluta causaba overflow horizontal en móvil — ahora relativa */
-    position: relative;
     width: 100%;
     max-width: var(--container-max);
-    margin: var(--sp-2xl) auto 0;
+    margin: var(--sp-xl) auto 0;
+    /* En grid desktop, ocupa las 2 columnas */
     grid-column: 1 / -1;
 }
 
@@ -189,9 +188,14 @@
 }
 
 /* ── NAV LINK BTN (CTA en navbar) ── */
-.nav-link-btn {
-    padding: var(--sp-sm) var(--sp-lg) !important;
-    font-size: var(--fs-sm) !important;
+.nav-link-btn.btn-primary {
+    padding: 8px 24px;
+    font-size: var(--fs-sm);
+}
+
+/* No aplicar underline del nav-link al botón CTA */
+.nav-link-btn.btn-primary::after {
+    display: none;
 }
 
 /* ============================================
@@ -206,7 +210,7 @@
     }
 
     .stats-glass-card {
-        padding: var(--sp-lg) var(--sp-xl);
+        padding: var(--sp-lg) var(--sp-md);
         flex-direction: column;
         gap: 0;
     }

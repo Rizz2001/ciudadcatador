@@ -1,6 +1,5 @@
 /* ============================================
    LAYOUT — CIUDAD CATADOR
-   Navbar fijo, hero grid, locales grid, ubicación, footer
    ============================================ */
 
 /* ── NAVBAR (FIJO) ── */
@@ -20,6 +19,10 @@
     border-bottom: 1px solid var(--border-light);
     z-index: 1000;
     transition: background var(--transition-base);
+}
+
+.logo a {
+    display: inline-block;
 }
 
 .logo img {
@@ -127,10 +130,17 @@
 
 .hero-image img {
     width: 100%;
-    aspect-ratio: 5 / 4;
+    height: auto;
     object-fit: cover;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-2xl);
+}
+
+/* aspect-ratio con fallback para navegadores antiguos */
+@supports (aspect-ratio: 5 / 4) {
+    .hero-image img {
+        aspect-ratio: 5 / 4;
+    }
 }
 
 .glow-effect {
@@ -171,16 +181,16 @@
     margin: 0 auto;
 }
 
-/* FIX: Grid con auto-fit + minmax para simetría perfecta en cualquier resolución */
+/* Grid de locales — compatible con todos los navegadores modernos */
 .locales-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--sp-xl);
     max-width: var(--container-max);
     margin: 0 auto;
 }
 
-/* Tarjetas de locales — diseño premium */
+/* Tarjetas de locales */
 .local-card {
     position: relative;
     background: var(--overlay-dark);
@@ -193,7 +203,10 @@
 .local-card::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: var(--bg-local);
     background-size: cover;
     background-position: center;
@@ -234,12 +247,12 @@
     flex-shrink: 0;
 }
 
-/* FIX: object-fit + aspect-ratio para que logos no se distorsionen */
 .local-logo img {
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
-    aspect-ratio: 1 / 1;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
 
@@ -263,7 +276,7 @@
     margin: 0 auto;
 }
 
-/* Indicador visual sutil al hover */
+/* Barra dorada al hover */
 .local-card::after {
     content: '';
     position: absolute;
@@ -319,7 +332,7 @@
 
 .ubicacion-map img {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: auto;
     object-fit: cover;
 }
 
@@ -334,7 +347,7 @@
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--sp-2xl);
     max-width: var(--container-max);
     margin: 0 auto;
@@ -401,6 +414,7 @@
     border-radius: 50%;
     color: var(--blanco);
     transition: all var(--transition-base);
+    text-decoration: none;
 }
 
 .icon-btn:hover {
@@ -424,7 +438,7 @@
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    ============================================ */
 
 /* TABLET+ (769px+) */
@@ -452,7 +466,6 @@
         padding: var(--sp-md) var(--section-padding-x);
         height: auto;
         min-height: 64px;
-        flex-wrap: wrap;
     }
 
     .nav-toggle {
@@ -509,7 +522,6 @@
         align-self: center;
     }
 
-    /* FIX: grid 1 columna en móvil para locales */
     .locales-grid {
         grid-template-columns: 1fr;
         gap: var(--sp-lg);
@@ -517,6 +529,12 @@
 
     .footer-content {
         grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .horarios-list li {
+        flex-direction: column;
+        gap: var(--sp-xs);
         text-align: center;
     }
 
@@ -529,7 +547,6 @@
     }
 }
 
-/* EXTRA SMALL (hasta 480px) */
 @media (max-width: 480px) {
     .hero-section {
         padding-left: var(--sp-lg);
