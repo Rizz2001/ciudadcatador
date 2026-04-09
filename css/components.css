@@ -158,7 +158,6 @@
     width: 100%;
     max-width: var(--container-max);
     margin: var(--sp-xl) auto 0;
-    /* En grid desktop, ocupa las 2 columnas */
     grid-column: 1 / -1;
 }
 
@@ -187,13 +186,11 @@
     line-height: 1;
 }
 
-/* ── NAV LINK BTN (CTA en navbar) ── */
 .nav-link-btn.btn-primary {
     padding: 8px 24px;
     font-size: var(--fs-sm);
 }
 
-/* No aplicar underline del nav-link al botón CTA */
 .nav-link-btn.btn-primary::after {
     display: none;
 }
@@ -209,23 +206,27 @@
         font-size: var(--fs-sm);
     }
 
+    /* Tarjeta de Estadísticas Compacta */
     .stats-glass-card {
-        padding: var(--sp-lg) var(--sp-md);
-        flex-direction: column;
-        gap: 0;
+        padding: var(--sp-md);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--sp-md);
     }
 
     .stat-item {
-        padding: var(--sp-md) 0;
-        border-bottom: 1px solid var(--border-light);
-    }
-
-    .stat-item:last-child {
+        flex: 1 1 30%;
+        padding: 0;
         border-bottom: none;
     }
 
     .stat-number {
-        font-size: var(--fs-4xl);
+        font-size: var(--fs-2xl);
+    }
+    
+    .stat-label {
+        font-size: 0.65rem;
     }
 }
 
@@ -234,7 +235,11 @@
     .btn-secondary,
     .btn-text {
         width: 100%;
+        max-width: 300px; /* Fix: Evita el botón gigante y deforme */
         text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
 
     .link-arrow {
