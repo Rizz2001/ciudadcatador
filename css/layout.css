@@ -87,7 +87,7 @@
 .hero-section {
     display: flex;
     flex-direction: column;
-    padding: calc(var(--navbar-height) + var(--sp-2xl)) var(--section-padding-x) var(--sp-3xl);
+    padding: calc(var(--navbar-height) + var(--sp-2xl)) var(--section-padding-x) var(--sp-2xl);
     position: relative;
     min-height: 100vh;
     gap: var(--sp-2xl);
@@ -447,8 +447,9 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        min-height: 100vh;
-        gap: var(--sp-3xl);
+        min-height: 60vh;
+        padding-top: calc(var(--navbar-height) + var(--sp-md)); /* AJUSTE: Disminuye drásticamente el margen superior */
+        gap: var(--sp-md);
     }
 
     .hero-content p {

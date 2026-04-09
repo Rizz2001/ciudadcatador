@@ -106,6 +106,8 @@
 @media (min-width: 769px) {
     :root {
         --section-padding-x: 8%;
+        --navbar-height: 250px; /* NUEVO: Altura más grande solo en pantallas de PC */
+    }
     }
 }
 

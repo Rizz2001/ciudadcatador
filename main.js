@@ -56,22 +56,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ── NAVBAR: opacidad al scroll ──
-    var navbar = document.getElementById('navbar');
-    if (navbar) {
-        var ticking = false;
-        window.addEventListener('scroll', function () {
-            if (!ticking) {
-                window.requestAnimationFrame(function () {
-                    if (window.scrollY > 60) {
-                        navbar.style.background = 'rgba(2, 11, 30, 0.95)';
-                    } else {
-                        navbar.style.background = 'rgba(2, 11, 30, 0.85)';
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
+   // ── NAVBAR: opacidad al scroll ──
+var navbar = document.getElementById('navbar');
+if (navbar) {
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 60) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
 
 });

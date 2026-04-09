@@ -9,23 +9,18 @@
 
     <title>Ciudad Catador | Tu punto de encuentro</title>
 
-    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 
-    <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="./css/main.css">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
 </head>
 <body>
 
-    <!-- ==================== HEADER ==================== -->
     <header class="navbar" id="navbar">
         <div class="logo">
             <a href="#inicio" aria-label="Ciudad Catador — Inicio">
@@ -47,7 +42,6 @@
         </nav>
     </header>
 
-    <!-- ==================== HERO ==================== -->
     <main class="hero-section" id="inicio">
         <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
             <h1>Tu nuevo punto<br>de encuentro.</h1>
@@ -81,67 +75,18 @@
         </div>
     </main>
 
-    <!-- ==================== LOCALES ==================== -->
     <section id="locales" class="locales-section">
         <div class="locales-header" data-aos="fade-up" data-aos-duration="1000">
             <h2>Locales comerciales de Ciudad Catador</h2>
             <p>Conoce las marcas y servicios que hacen vida en nuestro centro comercial.</p>
+            
+            <div id="filtros-container" class="filtros-wrapper"></div>
         </div>
 
-        <div class="locales-grid" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-
-            <article class="local-card" style="--bg-local: url('./assets/img/foto-local1.jpg')">
-                <a href="https://instagram.com/tu_local" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Visitar Local 1 en Instagram">
-                    <div class="local-logo">
-                        <img src="./assets/img/logo-local1.png" alt="Logo Local 1" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="local-info">
-                        <h3>Nombre del Local</h3>
-                        <p>Breve descripción de lo que ofrece este local comercial.</p>
-                    </div>
-                </a>
-            </article>
-
-            <article class="local-card" style="--bg-local: url('./assets/img/foto-mundonovo.jpg')">
-                <a href="https://instagram.com/gcmundonovo" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Visitar Mundo Novo en Instagram">
-                    <div class="local-logo">
-                        <img src="./assets/img/logo-local2.png" alt="Logo Mundo Novo" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="local-info">
-                        <h3>Mundo Novo</h3>
-                        <p>El mejor café y postres para compartir en familia.</p>
-                    </div>
-                </a>
-            </article>
-
-            <article class="local-card" style="--bg-local: url('./assets/img/foto-grancatador.jpg')">
-                <a href="https://instagram.com/bodeongrancat" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Visitar Bodegón Gran Catador en Instagram">
-                    <div class="local-logo">
-                        <img src="./assets/img/logo-local3.png" alt="Logo Bodegón Gran Catador" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="local-info">
-                        <h3>Bodegón Gran Catador</h3>
-                        <p>Licores exclusivos y la mejor charcutería de la ciudad.</p>
-                    </div>
-                </a>
-            </article>
-
-            <article class="local-card" style="--bg-local: url('./assets/img/foto-local4.jpg')">
-                <a href="https://instagram.com/tu_local" target="_blank" rel="noopener noreferrer" class="local-link" aria-label="Visitar Local 4 en Instagram">
-                    <div class="local-logo">
-                        <img src="./assets/img/logo-local4.png" alt="Logo Local 4" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="local-info">
-                        <h3>Nombre del Local</h3>
-                        <p>Breve descripción de lo que ofrece este local comercial.</p>
-                    </div>
-                </a>
-            </article>
-
-        </div>
+        <div id="locales-container" class="locales-grid" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            </div>
     </section>
 
-    <!-- ==================== UBICACIÓN ==================== -->
     <section id="ubicacion" class="ubicacion-section" data-aos="fade-up" data-aos-duration="1000">
         <div class="ubicacion-content">
             <div class="ubicacion-text">
@@ -157,7 +102,6 @@
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
     <footer class="footer-section" id="contacto">
         <div class="footer-content">
 
@@ -203,13 +147,13 @@
         </div>
 
         <div class="footer-bottom">
-            <p>2025 Ciudad Catador. Todos los derechos reservados.</p>
+            <p>2026 Ciudad Catador. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- ==================== SCRIPTS ==================== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./main.js"></script>
+    
+    <script type="module" src="./js/main.js"></script>
 
 </body>
 </html>
