@@ -491,7 +491,7 @@
 /* MOBILE (hasta 768px) - Interfaz Compacta y Ordenada */
 @media (max-width: 768px) {
     .navbar {
-        padding: var(--sp-sm) var(--section-padding-x);
+        padding: 8px var(--sp-sm) var(--section-padding-x);
         height: auto;
         min-height: 60px;
     }
@@ -503,7 +503,7 @@
     }
 
     .logo img {
-        width: 110px;
+        width: 70px;
     }
 
     /* Menú desplegable tipo Dropdown (no ocupa pantalla completa) */
