@@ -1,91 +1,127 @@
-/* ===================================
-   BOTONES
-   =================================== */
+/* ============================================
+   COMPONENTES — CIUDAD CATADOR
+   Botones, links, tarjeta glass, estados
+   ============================================ */
 
+/* ── BOTÓN PRIMARY ── */
 .btn-primary {
-    background: linear-gradient(135deg, var(--acento) 0%, #b8900f 100%);
-    color: #000;
-    padding: 13px 32px;
+    background-color: var(--blanco);
+    color: var(--bg-dark);
+    padding: var(--sp-md) var(--sp-xl);
     border-radius: var(--radius-full);
-    border: none;
+    border: 2px solid transparent;
     font-family: var(--font-text);
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-base);
     text-decoration: none;
     cursor: pointer;
     display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(212,175,55,0.3);
-    white-space: nowrap;
+    transition: all var(--transition-base);
+    letter-spacing: 0.01em;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--acento-hover) 0%, var(--acento) 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(212,175,55,0.45);
+    background-color: var(--acento);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent);
 }
 
-.btn-primary:active { transform: scale(0.97); }
+.btn-primary:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
+}
 
 .btn-primary:disabled {
-    opacity: 0.5;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: rgba(0, 0, 0, 0.4);
     cursor: not-allowed;
     box-shadow: none;
+    transform: none;
 }
 
+/* ── BOTÓN SECONDARY ── */
 .btn-secondary {
-    background: transparent;
+    background-color: transparent;
     color: var(--blanco);
-    padding: 13px 32px;
+    padding: var(--sp-md) var(--sp-xl);
     border-radius: var(--radius-full);
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 2px solid var(--blanco);
     font-family: var(--font-text);
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-base);
     text-decoration: none;
     cursor: pointer;
     display: inline-block;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
+    transition: all var(--transition-base);
 }
 
 .btn-secondary:hover {
+    background-color: var(--acento);
     border-color: var(--acento);
-    color: var(--acento);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212,175,55,0.15);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent);
 }
 
-.btn-secondary:active { transform: scale(0.97); }
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
 
+.btn-secondary:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary:disabled {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+/* ── BOTÓN TEXTO ── */
 .btn-text {
     color: var(--blanco);
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 8px 4px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color var(--transition-base);
+    text-decoration: none;
+    font-weight: var(--fw-semibold);
+    padding: var(--sp-sm) var(--sp-md);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    transition: all var(--transition-base);
 }
 
-.btn-text:hover { color: var(--acento); }
-
-/* ===================================
-   LINK CON FLECHA
-   =================================== */
-.link-arrow {
+.btn-text:hover {
     color: var(--acento);
-    font-weight: 600;
-    font-size: 0.95rem;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.btn-text:focus-visible {
+    color: var(--acento);
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
+.btn-text:active {
+    transform: scale(0.96);
+}
+
+/* ── LINK CON FLECHA ── */
+.link-arrow {
+    color: var(--blanco);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-medium);
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    transition: gap var(--transition-base), opacity var(--transition-base);
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    text-underline-offset: 4px;
+    gap: var(--sp-sm);
+    transition: all var(--transition-base);
 }
 
 .link-arrow::after {
@@ -93,57 +129,111 @@
     transition: transform var(--transition-base);
 }
 
-.link-arrow:hover {
+.link-arrow:hover,
+.link-arrow:focus-visible {
+    color: var(--acento);
     text-decoration-color: var(--acento);
-    gap: 12px;
 }
 
 .link-arrow:hover::after {
     transform: translateX(4px);
 }
 
-/* ===================================
-   DIVIDERS
-   =================================== */
-.section-divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--acento), transparent);
-    margin: 0 auto 20px;
-    border-radius: 2px;
+.link-arrow:focus-visible {
+    outline: 2px dashed var(--acento);
+    outline-offset: 3px;
 }
 
-/* ===================================
-   HIGHLIGHT TEXT
-   =================================== */
-.text-highlight {
-    color: var(--acento);
+/* ── TARJETA GLASS (Stats) ── */
+.stats-glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--sp-2xl) var(--sp-3xl);
+    display: flex;
+    justify-content: space-around;
+    gap: var(--sp-xl);
+    /* FIX: posición absoluta causaba overflow horizontal en móvil — ahora relativa */
+    position: relative;
+    width: 100%;
+    max-width: var(--container-max);
+    margin: var(--sp-2xl) auto 0;
+    grid-column: 1 / -1;
 }
 
-/* ===================================
-   BADGE
-   =================================== */
-.badge {
-    display: inline-block;
-    background: rgba(212,175,55,0.1);
-    border: 1px solid rgba(212,175,55,0.3);
-    color: var(--acento);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-sm);
+    text-align: center;
+}
+
+.stat-label {
+    font-family: var(--font-text);
+    color: var(--gris-marca);
+    font-size: var(--fs-xs);
     text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
+    letter-spacing: 1px;
+    font-weight: var(--fw-medium);
 }
 
-/* ===================================
+.stat-number {
+    font-family: var(--font-title);
+    color: var(--blanco);
+    font-size: var(--fs-5xl);
+    font-weight: var(--fw-extrabold);
+    line-height: 1;
+}
+
+/* ── NAV LINK BTN (CTA en navbar) ── */
+.nav-link-btn {
+    padding: var(--sp-sm) var(--sp-lg) !important;
+    font-size: var(--fs-sm) !important;
+}
+
+/* ============================================
    RESPONSIVE
-   =================================== */
-@media (max-width: 480px) {
+   ============================================ */
+
+@media (max-width: 768px) {
     .btn-primary,
     .btn-secondary {
+        padding: 10px 20px;
+        font-size: var(--fs-sm);
+    }
+
+    .stats-glass-card {
+        padding: var(--sp-lg) var(--sp-xl);
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .stat-item {
+        padding: var(--sp-md) 0;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    .stat-number {
+        font-size: var(--fs-4xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-text {
         width: 100%;
         text-align: center;
-        justify-content: center;
+    }
+
+    .link-arrow {
+        font-size: var(--fs-base);
     }
 }

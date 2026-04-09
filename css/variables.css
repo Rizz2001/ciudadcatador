@@ -1,45 +1,73 @@
+/* ============================================
+   CIUDAD CATADOR — DESIGN TOKENS
+   Auditoría: variables unificadas, tipografía fluida con clamp()
+   ============================================ */
+
 :root {
-    /* TIPOGRAFÍA */
+    /* ── TIPOGRAFÍA ── */
     --font-title: 'Poppins', sans-serif;
     --font-text: 'Montserrat', sans-serif;
 
+    /* Escala fluida con clamp() — mobile-first */
     --fs-xs: 0.75rem;
     --fs-sm: 0.875rem;
     --fs-base: 1rem;
     --fs-lg: 1.125rem;
     --fs-xl: 1.25rem;
-    --fs-2xl: 1.5rem;
-    --fs-3xl: 1.875rem;
-    --fs-4xl: 2.25rem;
-    --fs-5xl: 3rem;
-    --fs-6xl: 3.75rem;
+    --fs-2xl: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+    --fs-3xl: clamp(1.5rem, 1.2rem + 1.5vw, 1.875rem);
+    --fs-4xl: clamp(1.75rem, 1.2rem + 2.5vw, 2.25rem);
+    --fs-5xl: clamp(2.25rem, 1.5rem + 3.5vw, 3rem);
+    --fs-6xl: clamp(2.5rem, 1.5rem + 4.5vw, 4.5rem);
 
+    /* Pesos */
     --fw-regular: 400;
     --fw-medium: 500;
     --fw-semibold: 600;
     --fw-bold: 700;
     --fw-extrabold: 800;
 
-    /* COLORES — estilo VSL oscuro azulado */
-    --bg-primary: #03050f;
-    --bg-secondary: #060c1e;
-    --bg-dark: #03050f;
-    --bg-card: rgba(6, 12, 40, 0.8);
+    /* ── COLORES ── */
 
-    --blanco: #ffffff;
-    --gris-marca: rgba(180, 200, 230, 0.7);
-    --acento: #d4af37;
-    --acento-hover: #e5c158;
-    --azul-glow: #1a3cff;
-    --azul-medio: #0a1a6b;
+    /* Fondos */
+    --bg-primary: #020b1e;
+    --bg-secondary: #001a58;
+    --bg-tertiary: #00113a;
+    --bg-dark: #020b1e;
+    --bg-dark-gradient: linear-gradient(135deg, #020b1e 0%, #00113a 100%);
 
+    /* Texto */
     --text-primary: #ffffff;
-    --text-secondary: rgba(180, 200, 230, 0.8);
+    --text-secondary: #b8c5d6;
+    --text-tertiary: #8a96a8;
+    --text-inverse: #001a58;
+    --blanco: #ffffff;
 
-    --border-light: rgba(255, 255, 255, 0.08);
-    --border-accent: rgba(212, 175, 55, 0.4);
+    /* Gris marca (alias semántico) */
+    --gris-marca: #b8c5d6;
 
-    /* ESPACIADO */
+    /* Acentos */
+    --acento: #d4af37;
+    --accent-primary: #d4af37;
+    --accent-hover: #e5c158;
+    --accent-dark: #b89c2c;
+    --accent-glow: rgba(212, 175, 55, 0.3);
+
+    /* Estados */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+
+    /* Borders & Overlays */
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-medium: rgba(255, 255, 255, 0.2);
+    --overlay-dark: rgba(0, 0, 0, 0.4);
+    --overlay-darker: rgba(0, 0, 0, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+
+    /* ── ESPACIADO ── */
     --sp-xs: 0.25rem;
     --sp-sm: 0.5rem;
     --sp-md: 1rem;
@@ -50,24 +78,37 @@
     --sp-4xl: 5rem;
     --sp-5xl: 6rem;
 
-    /* BORDES */
+    /* Sección padding (fluido) */
+    --section-padding-x: clamp(5%, 3rem, 10%);
+    --section-padding-y: clamp(3rem, 5vw, 6rem);
+
+    /* ── BORDES Y ESQUINAS ── */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 16px;
     --radius-xl: 20px;
+    --radius-2xl: 24px;
     --radius-full: 9999px;
 
-    /* SOMBRAS */
-    --shadow-glow: 0 0 40px rgba(26, 60, 255, 0.25);
-    --shadow-acento: 0 0 30px rgba(212, 175, 55, 0.3);
-    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.6);
+    /* ── SOMBRAS ── */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.4);
+    --shadow-accent: 0 8px 16px rgba(212, 175, 55, 0.3);
 
+    /* ── TRANSICIONES ── */
     --transition-fast: 0.15s ease;
     --transition-base: 0.3s ease;
     --transition-slow: 0.5s ease;
 
+    /* ── LAYOUT ── */
     --container-max: 1200px;
     --container-padding: 5%;
+    --navbar-height: 80px;
 }
 
 @media (prefers-reduced-motion: reduce) {
