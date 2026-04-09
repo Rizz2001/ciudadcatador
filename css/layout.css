@@ -31,7 +31,7 @@
 }
 
 .logo img {
-    width: 160px;
+    width: 130px;
     height: auto;
     object-fit: contain;
 }
@@ -458,7 +458,7 @@
 /* TABLET+ (769px+) - Optimizaciones Premium para Escritorio */
 @media (min-width: 769px) {
     .logo img {
-        width: 220px;
+        width: 80px;
     }
 
     .nav-link {
