@@ -4,7 +4,7 @@
 
 /* ── NAVBAR (FIJO) ── */
 .navbar {
-    position: fixed;
+    position: auto;
     top: 0;
     left: 0;
     right: 0;
@@ -13,11 +13,11 @@
     align-items: center;
     padding: var(--sp-lg) var(--section-padding-x);
     height: var(--navbar-height);
-    background: rgba(2, 11, 30, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgb(4, 3, 19);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(40px);
     border-bottom: 1px solid var(--border-light);
-    z-index: 1000;
+    z-index: 500;
     transition: background var(--transition-base);
 }
 
@@ -41,7 +41,7 @@
 }
 
 .nav-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 0, 0, 0.1);
 }
 
 .nav-links {
