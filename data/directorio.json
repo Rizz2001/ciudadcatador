@@ -1,0 +1,53 @@
+{
+  "categorias": [
+    {"id": "gastronomia", "nombre": "Gastronomía"},
+    {"id": "ropa", "nombre": "Moda y Ropa"},
+    {"id": "licores-charcuteria", "nombre": "Bodegones"}
+  ],
+  "locales": [
+    {
+      "id": "loc-001",
+      "nombre": "Mundo Novo",
+      "categoria_id": "gastronomia",
+      "descripcion": "El mejor café y postres para compartir en familia.",
+      "imagenes": {
+        "logo": "./assets/img/logo-local2.png",
+        "fondo": "./assets/img/foto-mundonovo.jpg"
+      },
+      "redes": { "instagram": "https://instagram.com/gcmundonovo" }
+    },
+    {
+      "id": "loc-002",
+      "nombre": "Bodegón Gran Catador",
+      "categoria_id": "licores-charcuteria",
+      "descripcion": "Licores exclusivos y la mejor charcutería de la ciudad.",
+      "imagenes": {
+        "logo": "./assets/img/logo-local3.png",
+        "fondo": "./assets/img/foto-grancatador.jpg"
+      },
+      "redes": { "instagram": "https://instagram.com/bodeongrancat" }
+    },
+    {
+      "id": "loc-003",
+      "nombre": "Nombre del Local 1",
+      "categoria_id": "ropa",
+      "descripcion": "Breve descripción de lo que ofrece este local comercial.",
+      "imagenes": {
+        "logo": "./assets/img/logo-local1.png",
+        "fondo": "./assets/img/foto-local1.jpg"
+      },
+      "redes": { "instagram": "https://instagram.com/tu_local" }
+    },
+    {
+      "id": "loc-004",
+      "nombre": "Nombre del Local 4",
+      "categoria_id": "gastronomia",
+      "descripcion": "Breve descripción de lo que ofrece este local comercial.",
+      "imagenes": {
+        "logo": "./assets/img/logo-local4.png",
+        "fondo": "./assets/img/foto-local4.jpg"
+      },
+      "redes": { "instagram": "https://instagram.com/tu_local" }
+    }
+  ]
+}
