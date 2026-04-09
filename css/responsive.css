@@ -1,0 +1,149 @@
+/* ============================================
+   RESPONSIVE (ADAPTACIÓN DE PANTALLAS)
+   ============================================ */
+
+/* --------------------------------------------
+   1. ESCRITORIO Y TABLETS GRANDES (769px en adelante)
+   -------------------------------------------- */
+@media (min-width: 769px) {
+    /* Variables reajustadas para PC */
+    :root {
+        --section-padding-x: 8%;
+        --navbar-height: 110px; /* Navbar Premium */
+    }
+
+    /* Layout Desktop */
+    .logo img { width: 100px; }
+    .nav-link { font-size: 1.15rem; padding: var(--sp-sm) var(--sp-lg); }
+    .nav-links { gap: 3rem; }
+
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        min-height: 80vh;
+        padding-top: calc(var(--navbar-height) + var(--sp-md));
+        gap: var(--sp-3xl);
+    }
+
+    .hero-content p { max-width: 480px; }
+    .ubicacion-content { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* --------------------------------------------
+   2. TELÉFONOS Y TABLETS PEQUEÑAS (Hasta 768px)
+   -------------------------------------------- */
+@media (max-width: 768px) {
+    
+    /* Navbar y Menú Desplegable */
+    .navbar {
+        padding: 15px var(--section-padding-x);
+        height: auto;
+        min-height: 70px;
+        justify-content: flex-end; 
+    }
+
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img { width: 80px; } /* Logo centrado */
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        background: rgba(2, 11, 30, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-medium);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: var(--sp-lg) var(--section-padding-x) var(--sp-xl);
+        gap: var(--sp-md);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all var(--transition-base);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-link { font-size: var(--fs-lg); width: 100%; text-align: center; padding: var(--sp-sm) 0; }
+    .nav-link-btn.btn-primary { width: 100%; max-width: 250px; margin-top: var(--sp-sm); }
+
+    /* Layout Mobile */
+    .hero-section {
+        padding-top: calc(75px + var(--sp-xl));
+        min-height: auto;
+        text-align: center;
+        gap: var(--sp-lg);
+    }
+
+    .hero-content p { max-width: 100%; font-size: var(--fs-base); }
+    .hero-btn { align-self: center; }
+    .locales-grid { grid-template-columns: 1fr; gap: var(--sp-lg); }
+    .ubicacion-text { text-align: center; }
+
+    /* Footer Mobile */
+    .footer-content { grid-template-columns: 1fr; text-align: center; gap: var(--sp-lg); }
+    .horarios-list li { flex-direction: column; gap: var(--sp-xs); text-align: center; }
+    .social-icons { justify-content: center; }
+
+    /* Componentes Mobile */
+    .btn-primary, .btn-secondary { padding: 10px 20px; font-size: var(--fs-sm); }
+    
+    .stats-glass-card {
+        padding: var(--sp-md);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--sp-md);
+    }
+
+    .stat-item { flex: 1 1 30%; padding: 0; border-bottom: none; }
+    .stat-number { font-size: var(--fs-2xl); }
+    .stat-label { font-size: 0.65rem; }
+}
+
+
+/* --------------------------------------------
+   3. TELÉFONOS MUY PEQUEÑOS (Hasta 480px)
+   -------------------------------------------- */
+@media (max-width: 480px) {
+    .hero-section, .locales-section {
+        padding-left: var(--sp-lg);
+        padding-right: var(--sp-lg);
+    }
+
+    .btn-primary, .btn-secondary, .btn-text {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .link-arrow { font-size: var(--fs-base); }
+}

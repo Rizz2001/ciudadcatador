@@ -1,5 +1,6 @@
 /* ============================================
    COMPONENTES — CIUDAD CATADOR
+   (Archivo base. Las adaptaciones están en responsive.css)
    ============================================ */
 
 /* ── BOTÓN PRIMARY ── */
@@ -190,59 +191,6 @@
     padding: 8px 24px;
     font-size: var(--fs-sm);
 }
-
 .nav-link-btn.btn-primary::after {
     display: none;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-@media (max-width: 768px) {
-    .btn-primary,
-    .btn-secondary {
-        padding: 10px 20px;
-        font-size: var(--fs-sm);
-    }
-
-    /* Tarjeta de Estadísticas Compacta */
-    .stats-glass-card {
-        padding: var(--sp-md);
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--sp-md);
-    }
-
-    .stat-item {
-        flex: 1 1 30%;
-        padding: 0;
-        border-bottom: none;
-    }
-
-    .stat-number {
-        font-size: var(--fs-2xl);
-    }
-    
-    .stat-label {
-        font-size: 0.65rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .btn-primary,
-    .btn-secondary,
-    .btn-text {
-        width: 100%;
-        max-width: 300px; /* Fix: Evita el botón gigante y deforme */
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
-
-    .link-arrow {
-        font-size: var(--fs-base);
-    }
 }

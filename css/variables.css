@@ -124,3 +124,9 @@
         --transition-slow: 0s;
     }
 }
+@media (min-width: 769px) {
+    :root {
+        --section-padding-x: 8%;
+        --navbar-height: 110px;
+    }
+}
