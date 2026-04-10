@@ -2,52 +2,66 @@
   "categorias": [
     {"id": "gastronomia", "nombre": "Gastronomía"},
     {"id": "ropa", "nombre": "Moda y Ropa"},
-    {"id": "licores-charcuteria", "nombre": "Bodegones"}
+    {"id": "licores-charcuteria", "nombre": "Bodegones"},
+    {"id": "restobar", "nombre": "Restobar"},
+    {"id": "papeleria", "nombre": "Papeleria"},
+    {"id": "gym", "nombre": "Gym - Ginmasio"}
   ],
   "locales": [
     {
       "id": "loc-001",
       "nombre": "Mundo Novo",
       "categoria_id": "gastronomia",
-      "descripcion": "El mejor café y postres para compartir en familia.",
+      "descripcion": "🍰 Postres espontáneos ☕ Cafés bien cuidados del Campo a la Taza 🥐 Productos horneados todos los días Desayuna, merienda y cena con nosotros",
       "imagenes": {
-        "logo": "./assets/img/logo-local2.png",
+        "logo": "./assets/img/local1.jpg",
         "fondo": "./assets/img/foto-mundonovo.jpg"
       },
-      "redes": { "instagram": "https://instagram.com/gcmundonovo" }
+      "redes": { "instagram": "https://www.instagram.com/mundonovocafe/" }
     },
     {
       "id": "loc-002",
       "nombre": "Bodegón Gran Catador",
       "categoria_id": "licores-charcuteria",
-      "descripcion": "Licores exclusivos y la mejor charcutería de la ciudad.",
+      "descripcion": "Supermercado Y Bodegon",
       "imagenes": {
-        "logo": "./assets/img/logo-local3.png",
-        "fondo": "./assets/img/foto-grancatador.jpg"
+        "logo": "./assets/img/local2.png",
+        "fondo": "./assets/img/foto-principal.jpg"
       },
-      "redes": { "instagram": "https://instagram.com/bodeongrancat" }
+      "redes": { "instagram": "https://www.instagram.com/elcatador.bnas/f" }
     },
     {
       "id": "loc-003",
-      "nombre": "Nombre del Local 1",
-      "categoria_id": "ropa",
-      "descripcion": "Breve descripción de lo que ofrece este local comercial.",
+      "nombre": "El Poblado",
+      "categoria_id": "restobar",
+      "descripcion": "🪩 CLUB NOCTURNO ✨ SÚPER SHOWS 🕞 MIE-SAB",
       "imagenes": {
-        "logo": "./assets/img/logo-local1.png",
-        "fondo": "./assets/img/foto-local1.jpg"
+        "logo": "./assets/img/poblado.jpg",
+        "fondo": "./assets/img/poblado.jpg"
       },
-      "redes": { "instagram": "https://instagram.com/tu_local" }
+      "redes": { "instagram": "https://www.instagram.com/elpoblado.ve/?hl=es" }
     },
     {
       "id": "loc-004",
-      "nombre": "Nombre del Local 4",
+      "nombre": "Cantina 13",
       "categoria_id": "gastronomia",
-      "descripcion": "Breve descripción de lo que ofrece este local comercial.",
+      "descripcion": "🔥 Tacos, birria, nachos y combos increíbles. 🇲🇽 Desde Barinas con sabor mexicano.",
       "imagenes": {
-        "logo": "./assets/img/logo-local4.png",
+        "logo": "./assets/img/cantina13.jpg",
         "fondo": "./assets/img/foto-local4.jpg"
       },
-      "redes": { "instagram": "https://instagram.com/tu_local" }
+      "redes": { "instagram": "https://www.instagram.com/somoscantina13/" }
+    },
+    {
+      "id": "loc-005",
+      "nombre": "Yinmen Papeleria",
+      "categoria_id": "papeleria",
+      "descripcion": "Papeleria, Bolsa de Regalos, Tarjetas de Regalos +",
+      "imagenes": {
+        "logo": "./assets/img/yinmen.jpg",
+        "fondo": "./assets/img/yinmen.jpg"
+      },
+      "redes": { "instagram": "https://www.instagram.com/papeleriayinmen/" }
     }
   ]
 }
