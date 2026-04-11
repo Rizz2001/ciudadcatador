@@ -14,8 +14,8 @@
       "categoria_id": "gastronomia",
       "descripcion": "🍰 Postres espontáneos ☕ Cafés bien cuidados del Campo a la Taza 🥐 Productos horneados todos los días Desayuna, merienda y cena con nosotros",
       "imagenes": {
-        "logo": "./assets/img/local1.jpg",
-        "fondo": "./assets/img/foto-mundonovo.jpg"
+        "logo": "./assets/img/local1.webp",
+        "fondo": "./assets/img/foto-mundonovo.webp"
       },
       "redes": { "instagram": "https://www.instagram.com/mundonovocafe/" }
     },
@@ -25,7 +25,7 @@
       "categoria_id": "licores-charcuteria",
       "descripcion": "Supermercado Y Bodegon",
       "imagenes": {
-        "logo": "./assets/img/local2.png",
+        "logo": "./assets/img/grancatador.webp",
         "fondo": "./assets/img/foto-principal.jpg"
       },
       "redes": { "instagram": "https://www.instagram.com/elcatador.bnas/f" }
@@ -36,8 +36,8 @@
       "categoria_id": "restobar",
       "descripcion": "🪩 CLUB NOCTURNO ✨ SÚPER SHOWS 🕞 MIE-SAB",
       "imagenes": {
-        "logo": "./assets/img/poblado.jpg",
-        "fondo": "./assets/img/poblado.jpg"
+        "logo": "./assets/img/poblado.webp",
+        "fondo": "./assets/img/"
       },
       "redes": { "instagram": "https://www.instagram.com/elpoblado.ve/?hl=es" }
     },
@@ -47,7 +47,7 @@
       "categoria_id": "gastronomia",
       "descripcion": "🔥 Tacos, birria, nachos y combos increíbles. 🇲🇽 Desde Barinas con sabor mexicano.",
       "imagenes": {
-        "logo": "./assets/img/cantina13.jpg",
+        "logo": "./assets/img/cantina13.webp",
         "fondo": "./assets/img/foto-local4.jpg"
       },
       "redes": { "instagram": "https://www.instagram.com/somoscantina13/" }
@@ -58,7 +58,7 @@
       "categoria_id": "papeleria",
       "descripcion": "Papeleria, Bolsa de Regalos, Tarjetas de Regalos +",
       "imagenes": {
-        "logo": "./assets/img/yinmen.jpg",
+        "logo": "./assets/img/yinmen.webp",
         "fondo": "./assets/img/yinmen.jpg"
       },
       "redes": { "instagram": "https://www.instagram.com/papeleriayinmen/" }
