@@ -434,14 +434,9 @@
 }
 
 .ubicacion-map img {
-.ubicacion-map img,
-.ubicacion-map iframe {
     width: 100%;
     height: auto;
-    height: 100%;
-    min-height: 380px; /* Asegura un buen tamaño en todos los dispositivos */
     object-fit: cover;
-    display: block; /* Elimina un pequeño margen fantasma en la parte inferior */
 }
 
 /* ── FOOTER ── */
