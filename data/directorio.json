@@ -5,6 +5,8 @@
     {"id": "licores-charcuteria", "nombre": "Bodegones"},
     {"id": "restobar", "nombre": "Restobar"},
     {"id": "papeleria", "nombre": "Papeleria"},
+    {"id": "gym", "nombre": "Gym - Ginmasio"},
+    {"id": "salud", "nombre": "Salud"}
     {"id": "gym", "nombre": "Gym - Ginmasio"}
   ],
   "locales": [
@@ -26,7 +28,7 @@
       "descripcion": "Supermercado Y Bodegon",
       "imagenes": {
         "logo": "./assets/img/grancatador.webp",
-        "fondo": "./assets/img/foto-principal.jpg"
+        "fondo": "./assets/img/foto-principal.webp"
       },
       "redes": { "instagram": "https://www.instagram.com/elcatador.bnas/f" }
     },
@@ -38,6 +40,7 @@
       "imagenes": {
         "logo": "./assets/img/poblado.webp",
         "fondo": "./assets/img/"
+        "fondo": "./assets/img/foto-principal.webp"
       },
       "redes": { "instagram": "https://www.instagram.com/elpoblado.ve/?hl=es" }
     },
@@ -48,7 +51,7 @@
       "descripcion": "🔥 Tacos, birria, nachos y combos increíbles. 🇲🇽 Desde Barinas con sabor mexicano.",
       "imagenes": {
         "logo": "./assets/img/cantina13.webp",
-        "fondo": "./assets/img/foto-local4.jpg"
+        "fondo": "./assets/img/foto-local4.webp"
       },
       "redes": { "instagram": "https://www.instagram.com/somoscantina13/" }
     },
@@ -59,9 +62,43 @@
       "descripcion": "Papeleria, Bolsa de Regalos, Tarjetas de Regalos +",
       "imagenes": {
         "logo": "./assets/img/yinmen.webp",
-        "fondo": "./assets/img/yinmen.jpg"
+        "fondo": "./assets/img/yinmen.webp"
       },
       "redes": { "instagram": "https://www.instagram.com/papeleriayinmen/" }
+    },
+    {
+      "id": "loc-006",
+      "nombre": "Sugar Crumb",
+      "categoria_id": "gastronomia",
+      "descripcion": "🍽Restaurant 🍱 🕐Lunes a Sábado",
+      "imagenes": {
+        "logo": "./assets/img/sugarcrumb.webp",
+        "fondo": "./assets/img/"
+        "fondo": "./assets/img/foto-principal.webp"
+      },
+      "redes": { "instagram": "https://www.instagram.com/sugarcrumb_ve/" }
+    },
+    {
+      "id": "loc-007",
+      "nombre": "Dental Clinic",
+      "categoria_id": "salud",
+      "descripcion": "🍽Restaurant 🍱 🕐Lunes a Sábado",
+      "imagenes": {
+        "logo": "./assets/img/sugarcrumb.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/sugarcrumb_ve/" }
+    },
+    {
+      "id": "loc-006",
+      "nombre": "Sugar Crumb",
+      "categoria_id": "gastronomia",
+      "descripcion": "🍽Restaurant 🍱 🕐Lunes a Sábado",
+      "imagenes": {
+        "logo": "./assets/img/sugarcrumb.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/sugarcrumb_ve/" }
     }
   ]
 }

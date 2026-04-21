@@ -21,18 +21,34 @@ async function iniciarAplicacion() {
     }
 }
 
-// --- 2. LÓGICA DE UI EXISTENTE (NAVBAR Y MENÚ) ---
+// --- 2. FUNCIÓN DE OPTIMIZACIÓN (THROTTLE) ---
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// --- 3. LÓGICA DE UI EXISTENTE (NAVBAR Y MENÚ) ---
 function inicializarUI() {
     // Scroll de la Navbar
     const navbar = document.getElementById('navbar');
     if (navbar) {
-        window.addEventListener('scroll', function () {
+        // Optimizamos el evento de scroll con throttle para no sobrecargar el navegador
+        const handleScroll = () => {
             if (window.scrollY > 60) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
+        };
+        window.addEventListener('scroll', throttle(handleScroll, 100)); // Se ejecuta max cada 100ms
     }
 
     // Menú Móvil (Hamburguesa)
@@ -44,11 +60,13 @@ function inicializarUI() {
             const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
             if (isExpanded) {
                 // Cerrar
+                navToggle.setAttribute('aria-label', 'Abrir menú');
                 navMenu.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('no-scroll');
             } else {
                 // Abrir
+                navToggle.setAttribute('aria-label', 'Cerrar menú');
                 navMenu.classList.add('active');
                 navToggle.setAttribute('aria-expanded', 'true');
                 document.body.classList.add('no-scroll');
@@ -59,6 +77,7 @@ function inicializarUI() {
         navMenu.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+                navToggle.setAttribute('aria-label', 'Abrir menú');
                 navToggle.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('no-scroll');
             });
@@ -71,7 +90,7 @@ function inicializarUI() {
     }
 }
 
-// --- 3. INICIO GENERAL ---
+// --- 4. INICIO GENERAL ---
 document.addEventListener('DOMContentLoaded', () => {
     inicializarUI();       // Arranca tu navbar y menú
     iniciarAplicacion();   // Arranca la carga de locales

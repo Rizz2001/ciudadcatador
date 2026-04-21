@@ -272,8 +272,8 @@
     .btn-filtro {
         width: 100% !important;
         min-width: 0 !important;
-        padding: 6px 1px !important; /* 2. Le quitamos casi todo el relleno lateral */
-        font-size: 0.6rem !important; /* 3. Letra un pelín más pequeña */
+        padding: 6px 2px !important; /* 2. Le quitamos casi todo el relleno lateral */
+        font-size: 0.75rem !important; /* 3. Aumentamos la letra a un mínimo legible */
         letter-spacing: -0.3px !important; /* 4. Juntamos un poquito las letras para que quepan más */
         text-align: center !important;
         

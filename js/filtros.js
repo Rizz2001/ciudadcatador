@@ -1,30 +1,30 @@
 // js/filtros.js
 import { renderizarLocales } from './ui.js';
 
-export function inicializarFiltros(todosLosLocales) {
+export function inicializarFiltros(locales) {
     const contenedorFiltros = document.getElementById('filtros-container');
 
-    contenedorFiltros.addEventListener('click', (evento) => {
-        if (evento.target.classList.contains('btn-filtro')) {
-            
-            // Apagar todos los botones (volverlos secundarios)
-            document.querySelectorAll('.btn-filtro').forEach(btn => {
-                btn.classList.remove('activo');
-                btn.classList.replace('btn-primary', 'btn-secondary');
-            });
-            
-            // Encender el botón clickeado (volverlo primario)
-            evento.target.classList.add('activo');
-            evento.target.classList.replace('btn-secondary', 'btn-primary');
+    contenedorFiltros.addEventListener('click', (e) => {
+        // Asegurarnos de que solo reaccionamos a los botones de filtro
+        if (e.target.classList.contains('btn-filtro')) {
+            const categoriaSeleccionada = e.target.dataset.categoria;
 
-            // Filtrar y renderizar
-            const categoriaSeleccionada = evento.target.dataset.categoria;
-            
+            // Actualizar estado visual y de accesibilidad de los botones
+            const botones = contenedorFiltros.querySelectorAll('.btn-filtro');
+            botones.forEach(boton => {
+                const esActivo = boton.dataset.categoria === categoriaSeleccionada;
+                boton.classList.toggle('activo', esActivo);
+                boton.classList.toggle('btn-primary', esActivo);
+                boton.classList.toggle('btn-secondary', !esActivo);
+                boton.setAttribute('aria-pressed', esActivo);
+            });
+
+            // Filtrar y renderizar los locales
             if (categoriaSeleccionada === 'todas') {
-                renderizarLocales(todosLosLocales);
+                renderizarLocales(locales);
             } else {
-                const filtrados = todosLosLocales.filter(local => local.categoria_id === categoriaSeleccionada);
-                renderizarLocales(filtrados);
+                const localesFiltrados = locales.filter(local => local.categoria_id === categoriaSeleccionada);
+                renderizarLocales(localesFiltrados);
             }
         }
     });

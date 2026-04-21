@@ -40,13 +40,14 @@ export function renderizarFiltros(categorias) {
     contenedor.style.marginBottom = '2rem';
 
     // Botón "Todos"
-    contenedor.innerHTML = '<button class="btn btn-primary btn-filtro activo" data-categoria="todas">Todos</button>';
+    contenedor.innerHTML = '<button class="btn btn-primary btn-filtro activo" data-categoria="todas" aria-pressed="true">Todos</button>';
 
     // Botones dinámicos
     categorias.forEach(cat => {
         const boton = document.createElement('button');
         // Usamos la clase btn-secondary para los que no están activos
         boton.className = 'btn btn-secondary btn-filtro'; 
+        boton.setAttribute('aria-pressed', 'false');
         boton.dataset.categoria = cat.id;
         boton.textContent = cat.nombre;
         contenedor.appendChild(boton);

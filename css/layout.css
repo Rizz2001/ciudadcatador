@@ -224,7 +224,7 @@
     background-image: var(--bg-local);
     background-size: cover;
     background-position: center;
-    filter: blur(8px) brightness(0.35);
+    filter: blur(5px) brightness(0.35); /* Reducimos el blur para mejorar rendimiento */
     z-index: 0;
     transform: scale(1.05); /* Fix: Compensa el borde difuminado */
     transition: filter var(--transition-slow), transform var(--transition-slow);
@@ -238,7 +238,7 @@
 }
 
 .local-card:hover::before {
-    filter: blur(4px) brightness(0.5);
+    filter: blur(2px) brightness(0.5); /* Reducimos también el blur del hover */
     transform: scale(1.12); /* Fix: Animación de escalado más limpia */
 }
 
@@ -432,7 +432,8 @@
     text-decoration: none;
 }
 
-.icon-btn:hover {
+.icon-btn:hover,
+.icon-btn:focus-visible { /* Usamos focus-visible para no afectar a usuarios de mouse */
     background: var(--acento);
     border-color: var(--acento);
     color: var(--bg-primary);
