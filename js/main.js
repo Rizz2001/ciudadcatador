@@ -109,9 +109,20 @@ function inicializarUI() {
         let scrollDirection = 1; // 1 = derecha, -1 = izquierda
         let resumeTimer;
 
+        // VIGILANTE: Detecta si la sección del carrusel está visible en la pantalla
+        let isVisible = true;
+        if (window.IntersectionObserver) {
+            const observer = new IntersectionObserver((entries) => {
+                isVisible = entries[0].isIntersecting;
+            }, { threshold: 0 }); // 0 = Avisa en cuanto asome aunque sea 1 pixel
+            
+            // Observamos toda la sección de locales
+            observer.observe(document.getElementById('locales'));
+        }
+
         function autoScrollLocales() {
-            // Solo hace auto-scroll si no está pausado Y si no está en modo cuadrícula expandida
-            if (!isPaused && !localesGrid.classList.contains('expanded')) {
+            // Solo hace auto-scroll si no está pausado, NO está expandido, Y está VISIBLE
+            if (!isPaused && !localesGrid.classList.contains('expanded') && isVisible) {
                 localesGrid.scrollLeft += scrollDirection; // Se mueve 1px por frame
                 
                 // Si llega al final derecho, cambia dirección a la izquierda
@@ -156,7 +167,11 @@ function inicializarUI() {
 
     // Iniciar animaciones de la librería AOS si está cargada en el HTML
     if (typeof AOS !== 'undefined') {
-        AOS.init();
+        AOS.init({
+            once: true, // Las animaciones se ejecutan solo 1 vez al bajar. Evita lag al subir y bajar rápido.
+            offset: 50, // Lanza la animación un poco antes para que se sienta más rápido
+            disable: 'mobile' // Opcional: Descomenta esto si notas tirones en teléfonos muy antiguos
+        });
     }
 }
 

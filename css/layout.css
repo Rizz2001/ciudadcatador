@@ -249,6 +249,7 @@
     -webkit-overflow-scrolling: touch; /* Deslizamiento suave en iOS */
     scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
     cursor: grab; /* Indica al usuario de PC que se puede agarrar/deslizar */
+    will-change: scroll-position; /* Advierte al navegador que esto sufrirá scroll constante */
 }
 
 /* Oculta la barra de scroll nativa en Chrome/Safari/Edge para que luzca como un carrusel premium */
@@ -281,6 +282,7 @@
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    contain: content; /* OPTIMIZACIÓN: Aísla la tarjeta para que sus animaciones no repinten toda la web */
 }
 
 .locales-grid.expanded .local-card {
