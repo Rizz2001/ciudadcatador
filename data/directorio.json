@@ -4,8 +4,8 @@
     {"id": "ropa", "nombre": "Moda y Ropa"},
     {"id": "licores-charcuteria", "nombre": "Bodegones"},
     {"id": "restobar", "nombre": "Restobar"},
-    {"id": "papeleria", "nombre": "Papeleria"},
-    {"id": "gym", "nombre": "Gym - Ginmasio"},
+    {"id": "papeleria", "nombre": "Papelería"},
+    {"id": "gym", "nombre": "Gimnasio"},
     {"id": "salud", "nombre": "Salud"},
     {"id": "Publicidad", "nombre": "Publicidad"}
   ],
@@ -90,7 +90,7 @@
     {
       "id": "loc-008",
       "nombre": "Siri Laser. Publicidad",
-      "categoria_id": "publicidad",
+      "categoria_id": "Publicidad",
       "descripcion": "Cortes y Grabados en láser || Publicidad 📤Envíos Nacionales 🚛Instalaciones en todo el país",
       "imagenes": {
         "logo": "./assets/img/sirilaser.webp",

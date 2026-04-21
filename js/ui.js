@@ -34,18 +34,14 @@ export function renderizarLocales(locales) {
 export function renderizarFiltros(categorias) {
     const contenedor = document.getElementById('filtros-container');
     
-    // Agregamos un poco de estilo directo al contenedor para que los botones se vean bien alineados
-    contenedor.style.display = 'flex';
-    contenedor.style.gap = '1rem';
-    contenedor.style.justifyContent = 'center';
-    contenedor.style.flexWrap = 'wrap';
-    contenedor.style.marginBottom = '2rem';
-
     // Botón "Todos"
     contenedor.innerHTML = '<button class="btn btn-primary btn-filtro activo" data-categoria="todas" aria-pressed="true">Todos</button>';
 
+    // Ordenamos las categorías alfabéticamente para que sea más fácil buscar
+    const categoriasOrdenadas = [...categorias].sort((a, b) => a.nombre.localeCompare(b.nombre));
+
     // Botones dinámicos
-    categorias.forEach(cat => {
+    categoriasOrdenadas.forEach(cat => {
         const boton = document.createElement('button');
         // Usamos la clase btn-secondary para los que no están activos
         boton.className = 'btn btn-secondary btn-filtro'; 

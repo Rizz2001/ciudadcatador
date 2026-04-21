@@ -102,10 +102,14 @@
 
     .hero-content p { max-width: 100%; font-size: var(--fs-base); }
     .hero-btn { align-self: center; }
-    /* --- AJUSTE: 2 LOCALES POR FILA EN TELÉFONOS --- */
+    
+    /* --- AJUSTE: FILA DESLIZANTE EN TELÉFONOS --- */
     .locales-grid { 
-        grid-template-columns: repeat(2, 1fr); /* Fuerza 2 columnas en móviles */
-        gap: 10px; /* Reducimos la separación para aprovechar el espacio */
+        gap: 15px; /* Mantenemos una separación cómoda */
+    }
+
+    .local-card {
+        flex: 0 0 240px; /* Tarjetas un poco más pequeñas para que luzcan mejor en el carrusel móvil */
     }
 
     /* Achicamos el contenido de la tarjeta para que quepa bien en la mitad de la pantalla */
@@ -154,40 +158,6 @@
     .stat-number { font-size: var(--fs-2xl); }
     .stat-label { font-size: 0.65rem; }
 }
-/* --- INYECCIÓN: FILTROS ESTILO CHIPS (EXCLUSIVO PARA TELÉFONOS) --- */
-    .filtros-wrapper {
-        display: grid !important;
-        /* La magia para que el texto se pueda cortar en una cuadrícula: */
-        grid-template-columns: repeat(4, minmax(0, 1fr)) !important; 
-        gap: 8px !important; 
-        width: 100% !important;
-        padding: 0 5px !important; 
-    }
-
-    .filtros-wrapper .btn-filtro.todos-btn {
-        grid-column: 1 / -1 !important; /* El botón TODOS arriba */
-        width: 100% !important;
-        margin-bottom: 5px !important;
-        font-size: 0.85rem !important;
-        padding: 10px !important;
-        white-space: normal !important; 
-        display: block !important;
-    }
-
-    .filtros-wrapper .btn-filtro {
-        width: 100% !important; 
-        min-width: 0 !important; /* CRUCIAL: Permite que el texto se corte con ... */
-        padding: 6px 4px !important; 
-        font-size: 0.65rem !important; 
-        text-align: center !important;
-        
-        /* EFECTO CHIPS (Etiquetas) */
-        display: block !important; 
-        white-space: nowrap !important; /* Prohíbe la segunda línea */
-        overflow: hidden !important; /* Esconde lo que no cabe */
-        text-overflow: ellipsis !important; /* Agrega los tres puntitos (...) */
-        border-radius: 20px !important; /* Bordes bien redonditos tipo etiqueta */
-    }
 /* --------------------------------------------
    3. TELÉFONOS MUY PEQUEÑOS (Hasta 480px)
    -------------------------------------------- */
