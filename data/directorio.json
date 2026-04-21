@@ -6,8 +6,8 @@
     {"id": "restobar", "nombre": "Restobar"},
     {"id": "papeleria", "nombre": "Papeleria"},
     {"id": "gym", "nombre": "Gym - Ginmasio"},
-    {"id": "salud", "nombre": "Salud"}
-    {"id": "gym", "nombre": "Gym - Ginmasio"}
+    {"id": "salud", "nombre": "Salud"},
+    {"id": "Publicidad", "nombre": "Publicidad"}
   ],
   "locales": [
     {
@@ -39,7 +39,6 @@
       "descripcion": "🪩 CLUB NOCTURNO ✨ SÚPER SHOWS 🕞 MIE-SAB",
       "imagenes": {
         "logo": "./assets/img/poblado.webp",
-        "fondo": "./assets/img/"
         "fondo": "./assets/img/foto-principal.webp"
       },
       "redes": { "instagram": "https://www.instagram.com/elpoblado.ve/?hl=es" }
@@ -73,7 +72,6 @@
       "descripcion": "🍽Restaurant 🍱 🕐Lunes a Sábado",
       "imagenes": {
         "logo": "./assets/img/sugarcrumb.webp",
-        "fondo": "./assets/img/"
         "fondo": "./assets/img/foto-principal.webp"
       },
       "redes": { "instagram": "https://www.instagram.com/sugarcrumb_ve/" }
@@ -82,23 +80,78 @@
       "id": "loc-007",
       "nombre": "Dental Clinic",
       "categoria_id": "salud",
-      "descripcion": "🍽Restaurant 🍱 🕐Lunes a Sábado",
+      "descripcion": "💎Sonrisas cerámica y resina 🔬Microendodoncia restauradora ✨Ortodoncia estética e implantes dentales",
       "imagenes": {
-        "logo": "./assets/img/sugarcrumb.webp",
+        "logo": "./assets/img/dentalclinic.webp",
         "fondo": "./assets/img/"
       },
-      "redes": { "instagram": "https://www.instagram.com/sugarcrumb_ve/" }
+      "redes": { "instagram": "https://www.instagram.com/dr.juliofigueroa/" }
     },
     {
-      "id": "loc-006",
-      "nombre": "Sugar Crumb",
-      "categoria_id": "gastronomia",
-      "descripcion": "🍽Restaurant 🍱 🕐Lunes a Sábado",
+      "id": "loc-008",
+      "nombre": "Siri Laser. Publicidad",
+      "categoria_id": "publicidad",
+      "descripcion": "Cortes y Grabados en láser || Publicidad 📤Envíos Nacionales 🚛Instalaciones en todo el país",
       "imagenes": {
-        "logo": "./assets/img/sugarcrumb.webp",
+        "logo": "./assets/img/sirilaser.webp",
         "fondo": "./assets/img/"
       },
-      "redes": { "instagram": "https://www.instagram.com/sugarcrumb_ve/" }
+      "redes": { "instagram": "https://www.instagram.com/siri_laser/" }
+    },
+    {
+      "id": "loc-009",
+      "nombre": "Valhalla",
+      "categoria_id": "gastronomia",
+      "descripcion": "CHORIPÁNES DIGNOS DEL VALHALLA #food •UNA NUEVA EXPERIENCIA GASTRONÓMICA 🔥 •Trabajamos de Miércoles a Domingo de 6pm a 1am",
+      "imagenes": {
+        "logo": "./assets/img/valhalla.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/valhalla.bns/" }
+    },
+    {
+      "id": "loc-010",
+      "nombre": "Los Rusos Barber",
+      "categoria_id": "ropa",
+      "descripcion": "Barberia",
+      "imagenes": {
+        "logo": "./assets/img/losrusos.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/barberialosrussos/" }
+    },
+    {
+      "id": "loc-011",
+      "nombre": "Magic Natural Spa",
+      "categoria_id": "salud",
+      "descripcion": "▫️Salud y estética integral ▫️ Propósito: Equilibrio Físico, Mental y Emocional ▫️Atención personalizada ▫️Recibiendo citas online (temporal)",
+      "imagenes": {
+        "logo": "./assets/img/magicnaturalspa.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/magicnaturalspa//" }
+    },
+    {
+      "id": "loc-012",
+      "nombre": "CataSalud",
+      "categoria_id": "salud",
+      "descripcion": " 👩🏻‍⚕️ Farmacia, Medicina y mucho más.💊 “Siempre pensando en ti”🤝 Somos parte del Grupo Catador🔽 Contáctanos",
+      "imagenes": {
+        "logo": "./assets/img/catasalud.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/farmaciacatasalud/" }
+    },
+    {
+      "id": "loc-013",
+      "nombre": "Avila Gym",
+      "categoria_id": "gym",
+      "descripcion": "🏋️‍♀️Musculación 😎 Work Dance ⚡️Funcional 👟Zona Cardio",
+      "imagenes": {
+        "logo": "./assets/img/avilagym.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/avilagymbarinas/" }
     }
   ]
 }

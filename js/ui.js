@@ -8,9 +8,11 @@ export function renderizarLocales(locales) {
         return;
     }
 
-    locales.forEach(local => {
+    locales.forEach((local, index) => {
         const articulo = document.createElement('article');
-        articulo.className = 'local-card';
+        // Añadimos la clase para la animación y un retraso escalonado
+        articulo.className = 'local-card animate-in';
+        articulo.style.animationDelay = `${index * 0.05}s`;
         // Inyectamos la variable CSS para el fondo como lo tenías originalmente
         articulo.style.setProperty('--bg-local', `url('${local.imagenes.fondo}')`);
         
