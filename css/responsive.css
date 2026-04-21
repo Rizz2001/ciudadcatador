@@ -108,6 +108,10 @@
         gap: 15px; /* Mantenemos una separación cómoda */
     }
 
+    .locales-grid.expanded {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Adaptable a 1 o 2 columnas en móviles */
+    }
+
     .local-card {
         flex: 0 0 240px; /* Tarjetas un poco más pequeñas para que luzcan mejor en el carrusel móvil */
     }

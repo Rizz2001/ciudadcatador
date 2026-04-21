@@ -240,7 +240,9 @@
     display: flex;
     flex-wrap: nowrap; /* Fuerza a que todos los locales estén en una sola fila */
     gap: var(--sp-xl);
-    width: 100%; /* Ocupa el ancho disponible */
+    width: fit-content; /* Permite que el contenedor se encoja si hay pocos locales */
+    max-width: 100%; /* Evita que crezca más allá de la pantalla */
+    margin: 0 auto; /* Centra el contenedor automáticamente */
     padding: 1rem 0; /* Espacio para que las sombras no se corten */
     overflow-x: auto; /* Permite el deslizamiento manual (scroll nativo) */
     scroll-behavior: auto; /* Animado por JS, el scroll manual es inmediato */
@@ -252,6 +254,19 @@
 /* Oculta la barra de scroll nativa en Chrome/Safari/Edge para que luzca como un carrusel premium */
 .locales-grid::-webkit-scrollbar {
     display: none;
+}
+
+/* --- MODO EXPANDIDO (VER TODOS) --- */
+.locales-grid.expanded {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en PC */
+    width: 100%; /* Vuelve a ocupar todo el ancho para mantener la cuadrícula uniforme */
+    overflow-x: visible; /* Desactiva el scroll horizontal */
+}
+
+.ver-todos-container {
+    text-align: center;
+    margin-top: var(--sp-2xl);
 }
 
 /* Tarjetas de locales */
@@ -266,6 +281,11 @@
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.locales-grid.expanded .local-card {
+    flex: auto; /* Quita el ancho fijo para que llene la columna uniformemente */
+    width: 100%;
 }
 
 .local-card::before {
@@ -414,9 +434,14 @@
 }
 
 .ubicacion-map img {
+.ubicacion-map img,
+.ubicacion-map iframe {
     width: 100%;
     height: auto;
+    height: 100%;
+    min-height: 380px; /* Asegura un buen tamaño en todos los dispositivos */
     object-fit: cover;
+    display: block; /* Elimina un pequeño margen fantasma en la parte inferior */
 }
 
 /* ── FOOTER ── */
@@ -519,4 +544,40 @@
 .footer-bottom p {
     color: var(--text-tertiary);
     font-size: var(--fs-xs);
+}
+
+/* ── BOTÓN VOLVER ARRIBA ── */
+.btn-volver-arriba {
+    position: fixed;
+    bottom: var(--sp-2xl);
+    right: var(--section-padding-x);
+    width: 50px;
+    height: 50px;
+    background: var(--acento);
+    color: var(--bg-primary, #000); /* Color oscuro para contrastar con el dorado */
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+}
+
+.btn-volver-arriba.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.btn-volver-arriba:hover,
+.btn-volver-arriba:focus-visible {
+    transform: translateY(-5px);
+    background: var(--blanco);
+    color: var(--bg-primary, #000);
 }

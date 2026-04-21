@@ -7,7 +7,8 @@
     {"id": "papeleria", "nombre": "Papelería"},
     {"id": "gym", "nombre": "Gimnasio"},
     {"id": "salud", "nombre": "Salud"},
-    {"id": "Publicidad", "nombre": "Publicidad"}
+    {"id": "Publicidad", "nombre": "Publicidad"},
+    {"id": "veterinaria", "nombre": "Veterinaria"}
   ],
   "locales": [
     {
@@ -152,6 +153,28 @@
         "fondo": "./assets/img/"
       },
       "redes": { "instagram": "https://www.instagram.com/avilagymbarinas/" }
+    },
+    {
+      "id": "loc-014",
+      "nombre": "Decolar",
+      "categoria_id": "ropa",
+      "descripcion": "Arquitectura | Decoración | Tendencias | '𝐓𝐮 𝐢𝐧𝐬𝐩𝐢𝐫𝐚𝐜𝐢ó𝐧 𝐥𝐚 𝐦𝐚𝐭𝐞𝐫𝐢𝐚𝐥𝐢𝐳𝐚𝐦𝐨𝐬 • Asesorías personalizadas",
+           "imagenes": {
+        "logo": "./assets/img/decolar.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/decolar.barinas/" }
+    },
+    {
+      "id": "loc-015",
+      "nombre": "Clinica Veterinaria Revet",
+      "categoria_id": "veterinaria",
+      "descripcion": "👩🏻‍⚕️ M.V. Ninel Rujano 🏥 Ozono-Terapia | Fisioterapia | Acupuntura | Kinesiología 🐶 Consulta y Atención 📍Barinas, VE 🐾 Atención por WhatsApp 👇🏽",
+           "imagenes": {
+        "logo": "./assets/img/revet.webp",
+        "fondo": "./assets/img/"
+      },
+      "redes": { "instagram": "https://www.instagram.com/decolar.barinas/" }
     }
   ]
 }

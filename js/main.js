@@ -37,18 +37,36 @@ function throttle(func, limit) {
 
 // --- 3. LÓGICA DE UI EXISTENTE (NAVBAR Y MENÚ) ---
 function inicializarUI() {
-    // Scroll de la Navbar
+    // Scroll de la Navbar y Botón Volver Arriba
     const navbar = document.getElementById('navbar');
-    if (navbar) {
-        // Optimizamos el evento de scroll con throttle para no sobrecargar el navegador
-        const handleScroll = () => {
-            if (window.scrollY > 60) {
+    const btnVolverArriba = document.getElementById('btn-volver-arriba');
+    
+    // Optimizamos el evento de scroll con throttle para no sobrecargar el navegador
+    const handleScroll = () => {
+        if (navbar) {
+             if (window.scrollY > 60) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-        };
-        window.addEventListener('scroll', throttle(handleScroll, 100)); // Se ejecuta max cada 100ms
+        }
+
+        // Mostrar/Ocultar el botón Volver Arriba después de bajar 300px
+        if (btnVolverArriba) {
+            if (window.scrollY > 300) {
+                btnVolverArriba.classList.add('visible');
+            } else {
+                btnVolverArriba.classList.remove('visible');
+            }
+        }
+    };
+    window.addEventListener('scroll', throttle(handleScroll, 100)); // Se ejecuta max cada 100ms
+
+    // Acción al hacer clic en el botón Volver Arriba
+    if (btnVolverArriba) {
+        btnVolverArriba.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 
     // Menú Móvil (Hamburguesa)
@@ -92,7 +110,8 @@ function inicializarUI() {
         let resumeTimer;
 
         function autoScrollLocales() {
-            if (!isPaused) {
+            // Solo hace auto-scroll si no está pausado Y si no está en modo cuadrícula expandida
+            if (!isPaused && !localesGrid.classList.contains('expanded')) {
                 localesGrid.scrollLeft += scrollDirection; // Se mueve 1px por frame
                 
                 // Si llega al final derecho, cambia dirección a la izquierda
@@ -119,6 +138,20 @@ function inicializarUI() {
         localesGrid.addEventListener('touchend', resumeScroll, { passive: true });
         localesGrid.addEventListener('mouseenter', pauseScroll);
         localesGrid.addEventListener('mouseleave', resumeScroll);
+
+        // --- FUNCIONALIDAD "VER TODOS" ---
+        const btnVerTodos = document.getElementById('btn-ver-todos');
+        if (btnVerTodos) {
+            btnVerTodos.addEventListener('click', () => {
+                localesGrid.classList.toggle('expanded');
+                
+                if (localesGrid.classList.contains('expanded')) {
+                    btnVerTodos.textContent = 'Ver menos locales';
+                } else {
+                    btnVerTodos.textContent = 'Ver todos los locales';
+                }
+            });
+        }
     }
 
     // Iniciar animaciones de la librería AOS si está cargada en el HTML
