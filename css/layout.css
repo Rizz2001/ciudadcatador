@@ -89,12 +89,14 @@
 }
 
 .nav-link:hover::after,
-.nav-link:focus::after {
+.nav-link:focus::after,
+.nav-link.active-link::after {
     transform: translateX(-50%) scaleX(1);
 }
 
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.nav-link.active-link {
     color: var(--acento);
 }
 

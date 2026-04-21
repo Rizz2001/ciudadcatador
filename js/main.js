@@ -102,6 +102,35 @@ function inicializarUI() {
         });
     }
 
+    // --- SCROLLSPY (RESALTAR MENÚ ACTIVO) ---
+    const sections = document.querySelectorAll('main[id], section[id], footer[id]');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-link-btn');
+
+    if (window.IntersectionObserver) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px', // Ajuste para que se active cuando la sección llega al centro de la pantalla
+            threshold: 0
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-link');
+                        // Si el href termina en el ID de la sección visible, lo resaltamos
+                        if (link.getAttribute('href').endsWith(`#${id}`)) {
+                            link.classList.add('active-link');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => sectionObserver.observe(section));
+    }
+
     // --- 4. MOTOR DE CARRUSEL (AUTO-SCROLL + MANUAL) ---
     const localesGrid = document.getElementById('locales-container');
     if (localesGrid) {
